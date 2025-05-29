@@ -1,7 +1,7 @@
-@import url("https://fonts.cdnfonts.com/css/satoshi");
-@import url("https://fonts.cdnfonts.com/css/satisfy");
-@import url("https://fonts.cdnfonts.com/css/sf-pro-display");
-@import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://fonts.cdnfonts.com/css/satisfy');
+@import url('https://fonts.cdnfonts.com/css/sf-pro-display');
+@import 'tailwindcss';
 
 :root {
   --background: #ffffff;
@@ -11,9 +11,9 @@
 }
 
 @theme inline {
-  --font-satoshi: "Satoshi", sans-serif;
-  --font-satisfy: "Satisfy", sans-serif;
-  --font-sf-pro: "SF Pro Display", sans-serif;
+  --font-satoshi: 'Satoshi', sans-serif;
+  --font-satisfy: 'Satisfy', sans-serif;
+  --font-sf-pro: 'SF Pro Display', sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -21,8 +21,13 @@
   --color-navbar-background: var(--navbar-background);
 }
 
+.section-heading {
+  /* Notre Histoire */
+  @apply text-[44px];
+}
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: "Satoshi", sans-serif;
+  font-family: 'Satoshi', sans-serif;
+  font-size: 18px;
 }
