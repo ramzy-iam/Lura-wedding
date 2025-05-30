@@ -1,30 +1,24 @@
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import { cn } from "../utils";
-import { Logo } from "./logo";
-import Link from "next/link";
-
-const links = [
-  { href: "#hero", label: "Jardin d'Eden" },
-  { href: "#history", label: "Notre Histoire" },
-  { href: "#agenda", label: "Agenda & info" },
-  { href: "#gallery", label: "Gallerie" },
-];
+import { useEffect, useState } from 'react';
+import { cn } from '../utils';
+import { Logo } from './logo';
+import Link from 'next/link';
+import { navLinks } from './sections/data';
 
 export function Navbar() {
   const [isMobile, setIsMobile] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 700px)");
+    const media = window.matchMedia('(max-width: 700px)');
     const handleResize = (e: MediaQueryListEvent | MediaQueryList) => {
       setIsMobile(e.matches);
     };
 
     handleResize(media);
-    media.addEventListener("change", handleResize);
-    return () => media.removeEventListener("change", handleResize);
+    media.addEventListener('change', handleResize);
+    return () => media.removeEventListener('change', handleResize);
   }, []);
 
   const openSidebar = () => setSidebarOpen(true);
@@ -33,14 +27,14 @@ export function Navbar() {
   return (
     <>
       {/* Top bar for mobile with logo and hamburger */}
-      <div className="sm:hidden  flex items-center justify-between bg-navbar-background h-[88px] px-4 pt-10 pb-2">
+      <div className="bg-navbar-background flex h-[88px] items-center justify-between px-4 pt-10 pb-2 sm:hidden">
         <Logo />
         <button
           onClick={openSidebar}
           aria-label="open sidebar"
           aria-expanded={sidebarOpen}
           aria-controls="navbar"
-          className="p-2 bg-transparent border-none cursor-pointer"
+          className="cursor-pointer border-none bg-transparent p-2"
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path
@@ -55,13 +49,13 @@ export function Navbar() {
       <nav
         id="navbar"
         className={cn(
-          "bg-navbar-background text-primary h-full sm:h-[88px] px-1 sm:px-32 sm:relative sm:translate-x-0 sm:flex sm:flex-row sm:items-center",
-          "fixed top-0 right-0  w-60 flex-col transition-transform duration-300 z-50 sm:w-full",
-          sidebarOpen ? "translate-x-0" : "translate-x-full"
+          'bg-navbar-background text-primary h-full px-1 sm:relative sm:flex sm:h-[88px] sm:translate-x-0 sm:flex-row sm:items-center sm:px-32',
+          'fixed top-0 right-0 z-50 w-60 flex-col transition-transform duration-300 sm:w-full',
+          sidebarOpen ? 'translate-x-0' : 'translate-x-full',
         )}
         aria-hidden={isMobile && !sidebarOpen}
       >
-        <ul className="flex flex-col sm:flex-row sm:items-center sm:gap-4 w-full px-4">
+        <ul className="flex w-full flex-col px-4 sm:flex-row sm:items-center sm:gap-4">
           {/* Show logo on larger screens too */}
           <li className="hidden sm:block">
             <Logo />
@@ -70,7 +64,7 @@ export function Navbar() {
             <button
               onClick={closeSidebar}
               aria-label="close sidebar"
-              className="block sm:hidden p-4 bg-transparent border-none cursor-pointer"
+              className="block cursor-pointer border-none bg-transparent p-4 sm:hidden"
             >
               <svg
                 width="24"
@@ -96,11 +90,11 @@ export function Navbar() {
               </svg>
             </button>
           </li>
-          {links.map((link) => (
+          {navLinks.map((link) => (
             <li key={link.href} className="font-sf-pro">
               <Link
                 href={link.href}
-                className="px-4 py-2 text-[#2F3033] block hover:text-primary"
+                className="hover:text-primary block px-4 py-2 text-[#2F3033]"
               >
                 {link.label}
               </Link>
@@ -113,7 +107,7 @@ export function Navbar() {
       {isMobile && sidebarOpen && (
         <div
           id="overlay"
-          className="fixed inset-0 bg-black/50 z-40"
+          className="fixed inset-0 z-40 bg-black/50"
           onClick={closeSidebar}
           aria-hidden="true"
         />

@@ -2,3 +2,8 @@ export * from './hero';
 export * from './history';
 export * from './garden';
 export * from './agenda';
+export * from './clothes';
+export * from './dress-code';
+export * from './gallery';
+export * from './contact';
+export * from './footer';
