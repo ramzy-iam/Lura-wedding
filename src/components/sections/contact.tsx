@@ -1,9 +1,12 @@
 export const ContactSection = () => {
   return (
-    <div id="gallery" className="flex items-center gap-6 px-4 py-20">
+    <div
+      id="contact"
+      className="flex items-center justify-center gap-6 px-4 py-20 sm:p-[128px]"
+    >
       <div className="flex flex-col gap-4 px-6 text-center">
         <h2 className="section-heading text-primary">Contactez-nous!</h2>
-        <p>
+        <p className="max-w-[664px]">
           Vous souhaitez nous laisser un message ou poser une question ?
           N’hésitez pas à nous contacter par courriel ou par téléphone aux
           coordonnées ci-dessous :

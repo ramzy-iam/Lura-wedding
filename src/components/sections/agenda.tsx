@@ -31,20 +31,23 @@ export const AgendaSection = () => {
   return (
     <div
       id="agenda"
-      className="flex flex-col justify-between gap-6 bg-[url(/images/bg-agenda.jpg)] bg-cover bg-no-repeat px-4 py-10 text-[14px] text-white sm:h-[887px] sm:flex-row sm:gap-12 sm:px-32"
+      className="flex flex-col justify-between gap-6 bg-[url(/images/bg-agenda.jpg)] bg-cover bg-no-repeat px-4 py-10 text-[14px] text-white sm:h-[887px] sm:items-center sm:justify-center sm:gap-12 sm:px-32 sm:py-[100px]"
     >
-      <div className="bg-primary/71 flex flex-col gap-8 rounded-[28px] px-4 py-6 pr-2">
+      <div className="bg-primary/71 flex w-full flex-col items-center gap-8 rounded-[28px] px-4 py-6 pr-2 sm:p-12">
         <div className="flex max-w-[516px] flex-col items-center gap-[21px]">
           <h2 className="section-heading text-center">Agenda</h2>
           <p className="text-center text-[16px]">
             Venez partager avec nous ces moments spéciaux
           </p>
         </div>
-        <div className="grid grid-cols-2 flex-wrap gap-x-4 gap-y-8">
+        <div className="grid w-full grid-cols-2 flex-wrap gap-x-4 gap-y-8 sm:grid-cols-4">
           {AgendaList.map((agenda) => (
-            <div key={agenda.title} className="flex flex-col gap-3">
+            <div
+              key={agenda.title}
+              className="flex flex-col gap-3 sm:col-span-1"
+            >
               {agenda.icon}
-              <h3 className="text-[16px]">{agenda.title}</h3>
+              <h3 className="text-[16px] font-medium">{agenda.title}</h3>
               <div className="flex gap-3">
                 {AgendaIcons.calendar}
                 <span>{agenda.date}</span>
@@ -63,7 +66,7 @@ export const AgendaSection = () => {
       </div>
 
       {/* Countdown */}
-      <div className="bg-primary/71 flex items-center justify-center gap-8 rounded-[28px] p-6">
+      <div className="bg-primary/71 flex max-w-[616px] items-center justify-center gap-8 rounded-[28px] p-6">
         <div className="grid grid-cols-11">
           <div className="col-span-2 flex flex-col items-center gap-3">
             <span>{pad(timeLeft.days)}</span>

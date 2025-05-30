@@ -14,7 +14,10 @@ const ColorSet = () => {
 
 export const DressCodeSection = () => {
   return (
-    <div id="dress-code" className="gap-6 px-6">
+    <div
+      id="dress-code"
+      className="flex flex-col gap-4 px-6 sm:flex-row sm:justify-between sm:gap-[108px] sm:px-32"
+    >
       <div className="flex flex-col gap-4">
         <h2 className="section-heading text-primary text-left">
           Tenue & Dress Code
@@ -53,8 +56,12 @@ export const DressCodeSection = () => {
           Pensez surtout à venir avec votre plus beau sourire, il illuminera
           notre Jardin d'Éden bien plus que n'importe quel accessoire !
         </p>
-        <img src="/images/dress-code-mobile.png" alt="Dress Code" />
       </div>
+      <img
+        src="/images/dress-code-mobile.png"
+        alt="Dress Code"
+        className="h-[468.61px] sm:h-[661px]"
+      />
     </div>
   );
 };

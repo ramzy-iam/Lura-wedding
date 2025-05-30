@@ -6,7 +6,7 @@ export const HeroSection = () => {
     >
       <div className="absolute top-0 z-[-1] h-[416.16px] w-full overflow-hidden sm:h-full sm:w-full">
         <img
-          className="sm-top-[23px] absolute top-0 w-full"
+          className="sm-top-[23px] absolute top-0 h-full w-full object-cover object-[30%_0%] sm:h-auto sm:w-full"
           src="/images/hero.jpg "
           alt="Hero"
         />

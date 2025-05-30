@@ -27,7 +27,7 @@ export function Navbar() {
   return (
     <>
       {/* Top bar for mobile with logo and hamburger */}
-      <div className="bg-navbar-background flex h-[88px] items-center justify-between px-4 pt-10 pb-2 sm:hidden">
+      <div className="bg-navbar-background flex h-[88px] items-center justify-between px-4 py-2 sm:hidden">
         <Logo />
         <button
           onClick={openSidebar}
@@ -45,26 +45,56 @@ export function Navbar() {
         </button>
       </div>
 
-      {/* Navbar links */}
+      {/* Desktop Navbar layout */}
       <nav
         id="navbar"
         className={cn(
-          'bg-navbar-background text-primary h-full px-1 sm:relative sm:flex sm:h-[88px] sm:translate-x-0 sm:flex-row sm:items-center sm:px-32',
-          'fixed top-0 right-0 z-50 w-60 flex-col transition-transform duration-300 sm:w-full',
-          sidebarOpen ? 'translate-x-0' : 'translate-x-full',
+          'bg-navbar-background text-primary h-full px-1 backdrop-blur-md sm:sticky sm:top-0 sm:z-50 sm:flex sm:h-[88px] sm:items-center sm:justify-between sm:px-32',
+          'sm:w-full', // always full width on desktop
+          isMobile
+            ? `fixed top-0 right-0 z-50 w-60 flex-col transition-transform duration-300 ${
+                sidebarOpen ? 'translate-x-0' : 'translate-x-full'
+              }`
+            : '', // no transform on desktop
         )}
         aria-hidden={isMobile && !sidebarOpen}
       >
-        <ul className="flex w-full flex-col px-4 sm:flex-row sm:items-center sm:gap-4">
-          {/* Show logo on larger screens too */}
-          <li className="hidden sm:block">
+        {/* Desktop */}
+        <div className="hidden w-full items-center justify-between sm:flex">
+          <div>
             <Logo />
-          </li>
-          <li className="sm:ml-auto">
+          </div>
+
+          <ul className="font-sf-pro flex gap-6">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="hover:text-primary block px-4 py-2 text-[#2F3033]"
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <div className="font-sf-pro">
+            <Link
+              href={'#contact'}
+              className="hover:text-primary block px-4 py-2 text-[#2F3033]"
+            >
+              Contactez-nous
+            </Link>
+          </div>
+        </div>
+
+        {/* Mobile Navbar */}
+        <ul className="flex w-full flex-col px-4 sm:hidden">
+          <li>
             <button
               onClick={closeSidebar}
               aria-label="close sidebar"
-              className="block cursor-pointer border-none bg-transparent p-4 sm:hidden"
+              className="block cursor-pointer border-none bg-transparent p-4"
             >
               <svg
                 width="24"
@@ -100,6 +130,14 @@ export function Navbar() {
               </Link>
             </li>
           ))}
+          <li className="font-sf-pro">
+            <Link
+              href={'#contact'}
+              className="hover:text-primary block px-4 py-2 text-[#2F3033]"
+            >
+              Contactez-nous
+            </Link>
+          </li>
         </ul>
       </nav>
 

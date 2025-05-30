@@ -44,39 +44,43 @@ const ContactGroup = ({
 
 export const ClothesSection = () => {
   return (
-    <div className="flex flex-col gap-4 p-4">
-      <h2 className="text-primary text-left text-[36px]">
-        La Belle Turquoise vous fait un clin d'oeil
-      </h2>
-      <div className="h-[181px] overflow-hidden rounded-[28px]">
-        <img
-          src="/images/turquoise.jpg"
-          alt="Turquoise"
-          className="h-full w-full object-cover object-center"
-        />
+    <div className="flex flex-col gap-6 p-4 sm:grid sm:grid-cols-2 sm:px-32">
+      <div className="flex flex-col gap-4 sm:col-span-1">
+        <h2 className="text-primary text-left text-[36px]">
+          La Belle Turquoise vous fait un clin d'oeil
+        </h2>
+        <div className="h-[181px] overflow-hidden rounded-[28px] sm:h-[322px]">
+          <img
+            src="/images/turquoise.jpg"
+            alt="Turquoise"
+            className="h-full w-full object-cover object-center"
+          />
+        </div>
+        <p className="font-satoshi text-[24px] font-medium">
+          Prix: <span className="text-primary">5000 FCFA</span>
+        </p>
       </div>
-      <p className="font-satoshi text-[24px] font-medium">
-        Prix: <span className="text-primary">5000 FCFA</span>
-      </p>
 
-      <div className="flex flex-col gap-6">
-        <div className="flex items-center justify-center rounded-[28px] bg-[#8A1049] p-7 text-white">
+      <div className="flex flex-col gap-6 sm:col-span-1 sm:gap-4">
+        <div className="flex items-center rounded-[28px] bg-[#8A1049] p-7 text-white">
           <div className="flex flex-col gap-5">
             <h3 className="text-[24px]">Comment la récupérer ?</h3>
-            <div className="flex flex-col gap-5">
+            <div className="flex flex-col gap-5 sm:flex-row">
               <ContactGroup
                 city={TurquoiseContact.group1.city}
                 list={TurquoiseContact.group1.list}
                 withBorder
               />
-              <ContactGroup
-                city={TurquoiseContact.group2.city}
-                list={TurquoiseContact.group2.list}
-              />
-              <ContactGroup
-                city={TurquoiseContact.group3.city}
-                list={TurquoiseContact.group3.list}
-              />
+              <div className="flex flex-1 flex-col sm:justify-between">
+                <ContactGroup
+                  city={TurquoiseContact.group2.city}
+                  list={TurquoiseContact.group2.list}
+                />
+                <ContactGroup
+                  city={TurquoiseContact.group3.city}
+                  list={TurquoiseContact.group3.list}
+                />
+              </div>
             </div>
           </div>
         </div>

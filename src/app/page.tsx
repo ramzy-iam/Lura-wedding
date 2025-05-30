@@ -23,8 +23,8 @@ export default function Home() {
         <ClothesSection />
         <DressCodeSection />
         <GallerySection />
-        <ContactSection />
       </main>
+      <ContactSection />
       <FooterSection />
     </div>
   );
