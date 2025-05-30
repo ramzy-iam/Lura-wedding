@@ -64,21 +64,24 @@ export const AgendaSection = () => {
 
       {/* Countdown */}
       <div className="bg-primary/71 flex items-center justify-center gap-8 rounded-[28px] p-6">
-        <div className="grid grid-cols-4">
-          <div className="col-span-1 flex flex-col items-center gap-3">
-            <span>{pad(timeLeft.days)}:</span>
+        <div className="grid grid-cols-11">
+          <div className="col-span-2 flex flex-col items-center gap-3">
+            <span>{pad(timeLeft.days)}</span>
             <span>Jours</span>
           </div>
-          <div className="col-span-1 flex flex-col items-center gap-3">
-            <span>{pad(timeLeft.hours)}:</span>
+          <span className="col-span-1 text-center">:</span>
+          <div className="col-span-2 flex flex-col items-center gap-3">
+            <span>{pad(timeLeft.hours)}</span>
             <span>Heures</span>
           </div>
-          <div className="col-span-1 flex flex-col items-center gap-3">
-            <span>{pad(timeLeft.minutes)}:</span>
+          <span className="col-span-1 text-center">:</span>
+          <div className="col-span-2 flex flex-col items-center gap-3">
+            <span>{pad(timeLeft.minutes)}</span>
             <span>Minutes</span>
           </div>
-          <div className="col-span-1 flex flex-col items-center gap-3">
-            <span>{pad(timeLeft.seconds)}:</span>
+          <span className="col-span-1 text-center">:</span>
+          <div className="col-span-2 flex flex-col items-center gap-3">
+            <span>{pad(timeLeft.seconds)}</span>
             <span>Secondes</span>
           </div>
         </div>

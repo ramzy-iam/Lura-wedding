@@ -13,7 +13,81 @@ export const GallerySection = () => {
           Restez connectés... des surprises arrivent!
         </p>
       </div>
-      <div></div>
+      <div
+        style={{ gridTemplateRows: 'repeat(16, 60px)' }}
+        className="grid grid-cols-2 gap-2 sm:gap-4"
+      >
+        <div className="col-span-1 row-span-3">
+          <img
+            src="/images/gallery/01-pull.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-4">
+          <img
+            src="/images/gallery/02-pull.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-3">
+          <img
+            src="/images/gallery/03-white-pagne.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-2">
+          <img
+            src="/images/gallery/04-white-pagne.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-2 row-span-4">
+          <img
+            src="/images/gallery/05-suit-gray.jpg"
+            className="h-full w-full object-cover object-[50%_5%]"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-5">
+          <img
+            src="/images/gallery/06-suit-gray.jpg"
+            className="object- h-full w-full object-cover"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-2">
+          <img
+            src="/images/gallery/07-suit-pink.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-4">
+          <img
+            src="/images/gallery/08-suit-pink.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-3">
+          <img
+            src="/images/gallery/09-jesus-la-star.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+        <div className="col-span-1 row-span-2">
+          <img
+            src="/images/gallery/10-jesus-la-star.jpg"
+            className="h-full w-full object-cover object-center"
+            alt="Gallery"
+          />
+        </div>
+      </div>
     </div>
   );
 };
