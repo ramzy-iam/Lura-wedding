@@ -47,7 +47,7 @@ export const ClothesSection = () => {
     <div className="flex flex-col gap-6 p-4 sm:grid sm:grid-cols-2 sm:px-32">
       <div className="flex flex-col gap-4 sm:col-span-1">
         <h2 className="text-primary text-left text-[36px]">
-          La Belle Turquoise vous fait un clin d'oeil
+          {"La Belle Turquoise vous fait un clin d'oeil"}
         </h2>
         <div className="h-[181px] overflow-hidden rounded-[28px] sm:h-[322px]">
           <img
@@ -57,14 +57,14 @@ export const ClothesSection = () => {
           />
         </div>
         <p className="font-satoshi text-[24px] font-medium">
-          Prix: <span className="text-primary">5000 FCFA</span>
+          Prix: <span className="text-primary">{'5000 FCFA'}</span>
         </p>
       </div>
 
       <div className="flex flex-col gap-6 sm:col-span-1 sm:gap-4">
         <div className="flex items-center rounded-[28px] bg-[#8A1049] p-7 text-white">
           <div className="flex flex-col gap-5">
-            <h3 className="text-[24px]">Comment la récupérer ?</h3>
+            <h3 className="text-[24px]">{'Comment la récupérer ?'}</h3>
             <div className="flex flex-col gap-5 sm:flex-row">
               <ContactGroup
                 city={TurquoiseContact.group1.city}
@@ -91,14 +91,15 @@ export const ClothesSection = () => {
             className="h-[24px] w-[24px]"
           />
           <p>
-            Checo et Chouquette{' '}
+            {'Checo et Chouquette '}
             <span className="font-satoshi font-medium">
-              vous prient, tout tendrement, de passer par ces points pour
-              récupérer votre précieuse étoffe.
-            </span>{' '}
-            On vous attend tous, rayonnants en turquoise, au{' '}
+              {
+                'vous prient, tout tendrement, de passer par ces points pour récupérer votre précieuse étoffe. '
+              }
+            </span>
+            {'On vous attend tous, rayonnants en turquoise, au '}
             <span className="text-primary font-satoshi font-medium">
-              Jardin d'Éden !
+              {"Jardin d'Éden !"}
             </span>
           </p>
         </div>

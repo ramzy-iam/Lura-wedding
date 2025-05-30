@@ -13,7 +13,7 @@ export const HeroSection = () => {
       </div>
       <div className="flex h-[242px] w-[361px] flex-col items-start gap-2 rounded-[28px] bg-white/85 p-6 shadow-[0_4px_4px_rgba(0,0,0,0.06)] sm:h-auto sm:w-auto">
         <h1 className="font-satisfy text-primary text-center text-[32px]">
-          Bienvenue dans le Jardin d'Éden de Checo & Chouquette
+          {"Bienvenue dans le Jardin d'Éden de Checo & Chouquette"}
         </h1>
         <p className="text-center text-[18px] italic">
           « Il fait toute chose bonne en son temps... » - Ecclésiaste 3:11a

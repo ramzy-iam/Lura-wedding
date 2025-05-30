@@ -23,14 +23,15 @@ export const DressCodeSection = () => {
           Tenue & Dress Code
         </h2>
         <p>
-          Thème :{' '}
+          {'Thème : '}
           <span className="text-primary font-satisfy text-[32px]">
-            Jardin d'Éden
+            {"Jardin d'Éden"}
           </span>
         </p>
         <p>
-          Nous vous invitons à adopter un style à la fois naturel et raffiné,
-          dans des tons doux et floraux.
+          {
+            ' Nous vous invitons à adopter un style à la fois naturel et raffiné,dans des tons doux et floraux.'
+          }
         </p>
         <p className="font-bold">Suggestions:</p>
         <div className="flex items-center gap-3">
@@ -53,8 +54,9 @@ export const DressCodeSection = () => {
           <p>À éviter : le noir ou le rouge vif</p>
         </div>
         <p>
-          Pensez surtout à venir avec votre plus beau sourire, il illuminera
-          notre Jardin d'Éden bien plus que n'importe quel accessoire !
+          {
+            "Pensez surtout à venir avec votre plus beau sourire, il illumineranotre Jardin d'Éden bien plus que n'importe quel accessoire !"
+          }
         </p>
       </div>
       <img

@@ -97,10 +97,10 @@ export const HistorySection = () => {
           </div>
 
           <p>
-            Tout a commencé un jour ...Nous pensions que c'était un hasard... et
+            {`Tout a commencé un jour ...Nous pensions que c'était un hasard... et
             pourtant, Dieu avait tout orchestré. Une rencontre marquée par une
             connexion immédiate, par un sourire, une discussion sans fin,... et
-            maintenant, nous voici prêts à nous engager pour la vie!{' '}
+            maintenant, nous voici prêts à nous engager pour la vie!`}
             <button
               ref={openButtonRef}
               onClick={openDialog}
@@ -128,7 +128,6 @@ export const HistorySection = () => {
         </div>
       </div>
 
-      {/* Modal avec div - version complète */}
       {isModalOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           {/* Backdrop */}
@@ -155,14 +154,11 @@ export const HistorySection = () => {
               <p>
                 Il était une fois une rencontre imprévue, un simple regard, un
                 éclat de rire partagé. Ce jour-là, sans le savoir, deux âmes se
-                sont reconnues.
-              </p>
-              <p>Ce n'était pas un hasard, mais une divine orchestration...</p>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magni
-                eveniet expedita illum. Harum reprehenderit dolorum praesentium
-                consequatur minus blanditiis pariatur qui nobis maiores neque
-                atque illum numquam, at veritatis minima.
+                sont reconnues. Lorem ipsum dolor sit, amet consectetur
+                adipisicing elit. Magni eveniet expedita illum. Harum
+                reprehenderit dolorum praesentium consequatur minus blanditiis
+                pariatur qui nobis maiores neque atque illum numquam, at
+                veritatis minima.
               </p>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure
@@ -184,7 +180,6 @@ export const HistorySection = () => {
               </p>
             </div>
 
-            {/* Bouton de fermeture sticky */}
             <div className="sticky bottom-0 rounded-b-2xl bg-white p-4">
               <button
                 onClick={closeDialog}
