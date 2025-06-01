@@ -24,20 +24,30 @@ import {
 import { SmilePlus } from 'lucide-react';
 import { useRef, useState } from 'react';
 import fr from '@emoji-mart/data/i18n/fr.json';
+import { useCreateComment } from '@/hooks';
 
 const commentSchema = z.object({
-  name: z.string().min(1, 'Nom requis'),
+  author: z.string().min(1, 'Nom requis'),
   email: z.string().email('Email invalide').optional().or(z.literal('')),
-  comment: z.string().min(1, 'Commentaire requis'),
+  comment: z
+    .string()
+    .min(1, 'Commentaire requis')
+    .max(500, 'Le commentaire doit contenir au maximum 500 caractères'),
 });
 
 type CommentSchema = z.infer<typeof commentSchema>;
 
-export const CommentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
+export const CommentForm = ({
+  onSuccess,
+  sortDesc,
+}: {
+  onSuccess?: () => void;
+  sortDesc?: boolean;
+}) => {
   const form = useForm<CommentSchema>({
     resolver: zodResolver(commentSchema),
     defaultValues: {
-      name: '',
+      author: '',
       email: '',
       comment: '',
     },
@@ -46,17 +56,19 @@ export const CommentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
 
-  const insertEmoji = (emoji: any) => {
-    const current = form.getValues('comment') || '';
+  const insertEmoji = (emoji: { native: string }) => {
+    const current = form.getValues('comment') ?? '';
     const newValue = current + emoji.native;
     form.setValue('comment', newValue);
     setShowEmojiPicker(false);
     textareaRef.current?.focus();
   };
 
-  const onSubmit = (data: CommentSchema) => {
-    console.log(data);
-    // Submit logic here (e.g., API call)
+  const { mutateAsync, isPending } = useCreateComment();
+
+  const onSubmit = async (data: CommentSchema) => {
+    const payload = { ...data, email: data.email ?? undefined };
+    await mutateAsync({ data: payload, sortDesc });
     onSuccess?.();
     form.reset();
   };
@@ -69,7 +81,7 @@ export const CommentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
       >
         <FormField
           control={form.control}
-          name="name"
+          name="author"
           render={({ field }) => (
             <FormItem>
               <FormLabel>Nom</FormLabel>
@@ -148,7 +160,9 @@ export const CommentForm = ({ onSuccess }: { onSuccess?: () => void }) => {
             </FormItem>
           )}
         />
-        <Button type="submit">Envoyer</Button>
+        <Button type="submit" disabled={isPending}>
+          {isPending ? 'Envoi...' : 'Envoyer'}
+        </Button>
       </form>
     </Form>
   );

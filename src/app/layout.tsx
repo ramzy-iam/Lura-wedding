@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
-import "./globals.css";
+import type { Metadata } from 'next';
+import { Providers } from '@/app/providers';
+import './globals.css';
 
 export const metadata: Metadata = {
-  title: "Lura",
-  description: "Unis pour la vie",
+  title: 'Lura',
+  description: 'Unis pour la vie',
 };
 
 export default function RootLayout({
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

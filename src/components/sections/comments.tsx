@@ -1,23 +1,119 @@
-'use client';
-
-import React, { useState } from 'react';
-import { Plus } from 'lucide-react';
+import React, { useState, useCallback } from 'react';
+import { ArrowDownWideNarrow, ArrowUpWideNarrow, Plus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { CommentFormModal } from '../forms';
+import { CommentForm, CommentFormModal } from '../forms';
+import { CommentItem, CommentSkeleton } from '../comments';
+import { useComments } from '@/hooks/useComments'; // adjust path as needed
+import { IComment } from '@/types';
 
 export const CommentSection = () => {
   const [open, setOpen] = useState(false);
+  const [sortDesc, setSortDesc] = useState(true);
+
+  const toggleSort = useCallback(() => {
+    setSortDesc((prev) => !prev);
+  }, []);
+
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+    refetch,
+  } = useComments(sortDesc);
+
+  const comments: IComment[] = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
-    <section className="relative flex items-center gap-6 px-4 py-20 sm:p-[128px]">
-      <div className="flex w-full items-center justify-between">
+    <section className="relative flex flex-col items-center gap-6 px-4 py-20 sm:items-start sm:px-[128px] sm:py-20">
+      {/* Mobile title and add button */}
+      <div className="flex w-full items-center justify-between sm:hidden">
         <h2 className="section-heading text-primary">Commentaires</h2>
         <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>
-          <Plus />
+          <Plus className="h-4 w-4" />
         </Button>
       </div>
 
-      <CommentFormModal open={open} onOpenChange={setOpen} />
+      <div className="flex w-full gap-5">
+        <div className="border-accent2 max-h-[500px] w-full overflow-y-auto rounded-md border sm:border-0">
+          <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-white px-4 py-3">
+            <h2 className="section-heading text-primary hidden sm:block">
+              Commentaires
+            </h2>
+            {!isLoading && data && (
+              <Button
+                variant="text"
+                size="sm"
+                onClick={toggleSort}
+                className="flex cursor-pointer items-center gap-1 text-sm"
+              >
+                {sortDesc ? (
+                  <>
+                    <ArrowDownWideNarrow className="h-4 w-4" />
+                    Plus récent
+                  </>
+                ) : (
+                  <>
+                    <ArrowUpWideNarrow className="h-4 w-4" />
+                    Plus ancien
+                  </>
+                )}
+              </Button>
+            )}
+          </div>
+
+          <div className="space-y-4 p-4">
+            {isLoading && (
+              <>
+                <CommentSkeleton />
+                <CommentSkeleton />
+                <CommentSkeleton />
+              </>
+            )}
+            {isError && (
+              <div className="text-red-500">
+                Une erreur est survenue.
+                <Button onClick={() => refetch()} variant="ghost" size="sm">
+                  Réessayer
+                </Button>
+              </div>
+            )}
+
+            {comments.map((comment, idx) => (
+              <CommentItem
+                key={`${comment.id}-${idx}`}
+                comment={comment}
+                isLast={idx === comments.length - 1}
+              />
+            ))}
+
+            {hasNextPage && (
+              <Button
+                onClick={() => fetchNextPage()}
+                disabled={isFetchingNextPage}
+                variant="text"
+                className="bg-navbar-background w-full cursor-pointer"
+              >
+                {isFetchingNextPage ? 'Chargement...' : 'Afficher plus'}
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop inline form */}
+        <div className="hidden w-full sm:block">
+          <CommentForm sortDesc={sortDesc} />
+        </div>
+      </div>
+
+      {/* Mobile modal form */}
+      <CommentFormModal
+        open={open}
+        onOpenChange={setOpen}
+        sortDesc={sortDesc}
+      />
     </section>
   );
 };

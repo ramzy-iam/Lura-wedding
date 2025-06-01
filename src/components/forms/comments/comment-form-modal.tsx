@@ -1,5 +1,3 @@
-'use client';
-
 import {
   Dialog,
   DialogContent,
@@ -11,16 +9,20 @@ import { CommentForm } from './comment-form';
 type Props = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  sortDesc?: boolean;
 };
 
-export const CommentFormModal = ({ open, onOpenChange }: Props) => {
+export const CommentFormModal = ({ open, onOpenChange, sortDesc }: Props) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="w-100svw">
         <DialogHeader>
           <DialogTitle>Ajouter un commentaire</DialogTitle>
         </DialogHeader>
-        <CommentForm onSuccess={() => onOpenChange(false)} />
+        <CommentForm
+          onSuccess={() => onOpenChange(false)}
+          sortDesc={sortDesc}
+        />
       </DialogContent>
     </Dialog>
   );

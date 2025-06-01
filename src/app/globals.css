@@ -9,7 +9,7 @@
   --foreground: #1e1e1e;
   --navbar-background: #fff6f5;
   --primary: #015d82;
-  --accent: #ff6faa;
+  --accent2: #ff6faa;
   --neutral-300: oklch(55.8% 0.009 286.1);
   --stroke-100: #f6f6f7;
   --radius: 0.625rem;
@@ -74,6 +74,7 @@
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
+  --color-accent2: var(--accent2);
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
