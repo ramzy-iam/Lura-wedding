@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useSwipeable } from 'react-swipeable';
 import Zoom from 'react-medium-image-zoom';
@@ -24,20 +24,27 @@ export const GallerySection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const openCarousel = (index: number) => {
-    setCurrentIndex(index + 1); // Offset by 1 to include "save the date"
-    setIsOpen(true);
-  };
+  const previewContainerRef = useRef<HTMLDivElement>(null);
+  const previewImageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
-  const closeCarousel = () => setIsOpen(false);
-  const showPrev = () =>
+  const openCarousel = useCallback((index: number) => {
+    setCurrentIndex(index + 1); // Offset by 1 for "save the date"
+    setIsOpen(true);
+  }, []);
+
+  const closeCarousel = useCallback(() => setIsOpen(false), []);
+
+  const showPrev = useCallback(() => {
     setCurrentIndex((prev) =>
       prev === 0 ? carouselImages.length - 1 : prev - 1,
     );
-  const showNext = () =>
+  }, []);
+
+  const showNext = useCallback(() => {
     setCurrentIndex((prev) =>
       prev === carouselImages.length - 1 ? 0 : prev + 1,
     );
+  }, []);
 
   const handlers = useSwipeable({
     onSwipedLeft: showNext,
@@ -45,6 +52,18 @@ export const GallerySection = () => {
     preventScrollOnSwipe: true,
     trackMouse: true,
   });
+
+  useEffect(() => {
+    if (!previewContainerRef.current) return;
+    const activeImage = previewImageRefs.current[currentIndex];
+    if (!activeImage) return;
+
+    activeImage.scrollIntoView({
+      behavior: 'smooth',
+      inline: 'center',
+      block: 'nearest',
+    });
+  }, [currentIndex]);
 
   return (
     <>
@@ -169,12 +188,18 @@ export const GallerySection = () => {
           </button>
 
           {/* Preview Strip */}
-          <div className="mt-16 mb-4 flex max-w-[90svw] gap-2 overflow-x-auto overflow-y-hidden px-4">
+          <div
+            ref={previewContainerRef}
+            className="mt-16 mb-4 flex max-w-[90svw] gap-2 overflow-x-auto overflow-y-hidden px-4"
+          >
             {carouselImages.map((src, index) => (
               <img
                 key={index}
                 src={src}
                 onClick={() => setCurrentIndex(index)}
+                ref={(el) => {
+                  previewImageRefs.current[index] = el;
+                }}
                 className={`h-16 w-auto cursor-pointer rounded-md object-cover transition-all duration-200 ${
                   currentIndex === index
                     ? 'scale-105 ring-4 ring-[#FF6FAA]'
