@@ -24,11 +24,12 @@ export const GallerySection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const previewContainerRef = useRef<HTMLDivElement>(null);
   const previewImageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   const openCarousel = useCallback((index: number) => {
-    setCurrentIndex(index + 1); // Offset by 1 for "save the date"
+    setCurrentIndex(index + 1); // Décalage pour "save the date"
     setIsOpen(true);
   }, []);
 
@@ -38,12 +39,14 @@ export const GallerySection = () => {
     setCurrentIndex((prev) =>
       prev === 0 ? carouselImages.length - 1 : prev - 1,
     );
+    restartAutoplay();
   }, []);
 
   const showNext = useCallback(() => {
     setCurrentIndex((prev) =>
       prev === carouselImages.length - 1 ? 0 : prev + 1,
     );
+    restartAutoplay();
   }, []);
 
   const handlers = useSwipeable({
@@ -53,6 +56,42 @@ export const GallerySection = () => {
     trackMouse: true,
   });
 
+  // Pause autoplay
+  const pauseAutoplay = () => {
+    if (autoplayRef.current) {
+      clearInterval(autoplayRef.current);
+      autoplayRef.current = null;
+    }
+  };
+
+  // Resume autoplay
+  const resumeAutoplay = () => {
+    if (!autoplayRef.current) {
+      autoplayRef.current = setInterval(() => {
+        setCurrentIndex((prev) =>
+          prev === carouselImages.length - 1 ? 0 : prev + 1,
+        );
+      }, 3000);
+    }
+  };
+
+  // Restart autoplay on manual navigation
+  const restartAutoplay = () => {
+    pauseAutoplay();
+    resumeAutoplay();
+  };
+
+  // Manage autoplay on open/close
+  useEffect(() => {
+    if (isOpen) {
+      resumeAutoplay();
+    } else {
+      pauseAutoplay();
+    }
+    return pauseAutoplay;
+  }, [isOpen]);
+
+  // Scroll preview strip to active image
   useEffect(() => {
     if (!previewContainerRef.current) return;
     const activeImage = previewImageRefs.current[currentIndex];
@@ -81,7 +120,7 @@ export const GallerySection = () => {
           </p>
         </div>
 
-        {/* Image Grid */}
+        {/* Image Grid (sans map) */}
         <div className="grid h-[1208.07px] grid-cols-2 grid-rows-16 gap-2 sm:container sm:mx-auto sm:h-[2264px] sm:grid-cols-12 sm:grid-rows-20 sm:gap-4">
           <div className="col-span-1 row-span-3 sm:col-span-5 sm:row-span-6">
             <img
@@ -229,6 +268,10 @@ export const GallerySection = () => {
                 className="max-h-[75svh] max-w-[90svw] rounded-lg shadow-xl select-none"
                 alt={`Gallery ${currentIndex + 1}`}
                 draggable={false}
+                onMouseEnter={pauseAutoplay}
+                onMouseLeave={resumeAutoplay}
+                onTouchStart={pauseAutoplay}
+                onTouchEnd={resumeAutoplay}
               />
             </Zoom>
             <div className="bg-opacity-50 pointer-events-none absolute right-2 bottom-2 rounded bg-black px-2 py-1 text-xs text-white md:hidden">
