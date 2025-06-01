@@ -1,6 +1,7 @@
 import {
   AgendaSection,
   ClothesSection,
+  CommentSection,
   ContactSection,
   DressCodeSection,
   FooterSection,
@@ -23,6 +24,7 @@ export default function Home() {
         <ClothesSection />
         <DressCodeSection />
         <GallerySection />
+        <CommentSection />
       </main>
       <ContactSection />
       <FooterSection />

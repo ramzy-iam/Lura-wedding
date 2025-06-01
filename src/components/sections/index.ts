@@ -7,3 +7,4 @@ export * from './dress-code';
 export * from './gallery';
 export * from './contact';
 export * from './footer';
+export * from './comments';
