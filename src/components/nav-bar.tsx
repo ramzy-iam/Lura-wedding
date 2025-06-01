@@ -65,7 +65,7 @@ export function Navbar() {
             <Logo />
           </div>
 
-          <ul className="font-sf-pro flex gap-6">
+          <ul className="font-satoshi flex gap-6">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -78,7 +78,7 @@ export function Navbar() {
             ))}
           </ul>
 
-          <div className="font-sf-pro">
+          <div className="font-satoshi">
             <Link
               href={'#contact'}
               className="hover:text-primary block px-4 py-2 text-[#2F3033]"
