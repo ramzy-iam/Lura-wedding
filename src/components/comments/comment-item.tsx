@@ -41,7 +41,8 @@ export const CommentItem: React.FC<{ comment: IComment; isLast: boolean }> = ({
 
   const displayedText = expanded
     ? comment.comment
-    : comment.comment.substring(0, MAX_PREVIEW_LENGTH);
+    : comment.comment.substring(0, MAX_PREVIEW_LENGTH) +
+      (needsTruncate ? '...' : '');
 
   return (
     <div className={`py-4 ${!isLast ? 'border-b border-gray-200' : ''}`}>
