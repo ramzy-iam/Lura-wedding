@@ -63,6 +63,18 @@ body {
   scrollbar-color: var(--neutral-300) var(--stroke-100);
 }
 
+.no-scrollbar {
+  overflow: auto;
+
+  /* Hide scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit browsers */
+}
+
 .text-body {
   @apply text-[16px] sm:text-[18px];
 }

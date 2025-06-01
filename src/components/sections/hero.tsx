@@ -19,6 +19,6 @@ export const HeroSection = () => {
           « Il fait toute chose bonne en son temps... » - Ecclésiaste 3:11a
         </p>
       </div>
-    </div>
+    </section>
   );
 };

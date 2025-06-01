@@ -94,6 +94,6 @@ export const AgendaSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

@@ -219,7 +219,7 @@ export const GallerySection = () => {
           {/* Close button */}
           <button
             onClick={closeCarousel}
-            className="absolute top-4 right-4 z-10 text-white hover:text-red-400"
+            className="absolute top-4 right-4 z-10 cursor-pointer text-white hover:text-red-400"
           >
             <X size={36} />
           </button>
@@ -227,7 +227,7 @@ export const GallerySection = () => {
           {/* Preview Strip */}
           <div
             ref={previewContainerRef}
-            className="mt-16 mb-4 flex max-w-[90svw] gap-2 overflow-x-auto overflow-y-hidden px-4"
+            className="no-scrollbar mt-16 mb-4 flex max-w-[90svw] gap-2 overflow-x-auto overflow-y-hidden px-4"
           >
             {carouselImages.map((src, index) => (
               <img
