@@ -13,7 +13,7 @@ export const ContactSection = () => {
         <h2 className="section-heading text-primary">Contactez-nous!</h2>
         <p className="max-w-[664px]">
           Vous souhaitez nous laisser un message ou poser une question ?<br />
-          N'hésitez pas à nous contacter par courriel ou par téléphone aux
+          {"N'hésitez"} pas à nous contacter par courriel ou par téléphone aux
           coordonnées ci-dessous :
         </p>
 
