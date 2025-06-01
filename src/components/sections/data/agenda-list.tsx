@@ -59,7 +59,7 @@ export const AgendaList = [
       </svg>
     ),
     date: '26/07/2025',
-    time: ' 9h',
+    time: ' 8h',
     location: 'Hôtel de Ville (Yaoundé)',
   },
   {
@@ -117,7 +117,7 @@ export const AgendaList = [
       </svg>
     ),
     date: '26/07/2025',
-    time: ' 14h30',
+    time: ' 14h',
     location: 'Club Camtel (Yaoundé)',
   },
   {

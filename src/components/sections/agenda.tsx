@@ -16,7 +16,7 @@ const getTimeRemaining = (targetDate: string) => {
 const pad = (n: number) => String(n).padStart(2, '0');
 
 export const AgendaSection = () => {
-  const targetDate = '2025-07-18T13:00:00';
+  const targetDate = '2025-07-26T08:00:00';
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(targetDate));
 
   useEffect(() => {

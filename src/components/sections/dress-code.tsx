@@ -47,7 +47,7 @@ export const DressCodeSection = () => {
         </div>
         <div className="flex items-center gap-3">
           {DressCodeIcons.bag}
-          <p>Couronnes végétales, nœuds papillon fleuris bienvenus</p>
+          <p>Couronnes végétales, nœuds papillon fleuris</p>
         </div>
         <div className="flex items-center gap-3">
           {DressCodeIcons.unavailable}
