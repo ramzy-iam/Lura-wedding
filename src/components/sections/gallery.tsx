@@ -66,13 +66,11 @@ export const GallerySection = () => {
 
   // Resume autoplay
   const resumeAutoplay = () => {
-    if (!autoplayRef.current) {
-      autoplayRef.current = setInterval(() => {
-        setCurrentIndex((prev) =>
-          prev === carouselImages.length - 1 ? 0 : prev + 1,
-        );
-      }, 3000);
-    }
+    autoplayRef.current ??= setInterval(() => {
+      setCurrentIndex((prev) =>
+        prev === carouselImages.length - 1 ? 0 : prev + 1,
+      );
+    }, 3000);
   };
 
   // Restart autoplay on manual navigation
