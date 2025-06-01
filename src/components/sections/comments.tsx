@@ -44,6 +44,13 @@ export const CommentSection = () => {
 
       <div className="flex w-full gap-5">
         <div className="border-accent2 max-h-[500px] w-full overflow-y-auto rounded-md border sm:border-0">
+          {true && (
+            <div className="w-full">
+              <div className="h-1.5 w-full overflow-hidden bg-pink-100">
+                <div className="animate-progress origin-left-right bg-accent2 h-full w-full"></div>
+              </div>
+            </div>
+          )}
           <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-white px-4 py-3">
             <h2 className="section-heading text-primary hidden sm:block">
               Commentaires
