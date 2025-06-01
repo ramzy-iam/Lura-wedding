@@ -1,9 +1,9 @@
-/* @import url('https://fonts.cdnfonts.com/css/satoshi'); */
-/* @import url('https://fonts.cdnfonts.com/css/satisfy'); */
+@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://fonts.cdnfonts.com/css/satisfy');
 @import url('https://fonts.cdnfonts.com/css/sf-pro-display');
 @import 'tailwindcss';
-@import url('../fonts/satoshi/css/satoshi.css');
-@import url('../fonts/satisfy/css/satisfy.css');
+/* @import url('../fonts/satoshi/css/satoshi.css'); */
+/* @import url('../fonts/satisfy/css/satisfy.css'); */
 
 :root {
   --background: #ffffff;

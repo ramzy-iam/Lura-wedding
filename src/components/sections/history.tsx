@@ -100,7 +100,7 @@ export const HistorySection = () => {
             {`Tout a commencé un jour ...Nous pensions que c'était un hasard... et
             pourtant, Dieu avait tout orchestré. Une rencontre marquée par une
             connexion immédiate, par un sourire, une discussion sans fin,... et
-            maintenant, nous voici prêts à nous engager pour la vie!`}
+            maintenant, nous voici prêts à nous engager pour la vie! `}
             <button
               ref={openButtonRef}
               onClick={openDialog}

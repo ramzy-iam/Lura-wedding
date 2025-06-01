@@ -30,7 +30,7 @@ export const DressCodeSection = () => {
         </p>
         <p>
           {
-            ' Nous vous invitons à adopter un style à la fois naturel et raffiné,dans des tons doux et floraux.'
+            ' Nous vous invitons à adopter un style à la fois naturel et raffiné, dans des tons doux et floraux.'
           }
         </p>
         <p className="font-bold">Suggestions:</p>
@@ -55,7 +55,7 @@ export const DressCodeSection = () => {
         </div>
         <p>
           {
-            "Pensez surtout à venir avec votre plus beau sourire, il illumineranotre Jardin d'Éden bien plus que n'importe quel accessoire !"
+            "Pensez surtout à venir avec votre plus beau sourire, il illuminera notre Jardin d'Éden bien plus que n'importe quel accessoire !"
           }
         </p>
       </div>
