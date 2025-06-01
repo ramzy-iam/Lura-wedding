@@ -25,6 +25,7 @@ import { SmilePlus } from 'lucide-react';
 import { useRef, useState } from 'react';
 import fr from '@emoji-mart/data/i18n/fr.json';
 import { useCreateComment } from '@/hooks';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const commentSchema = z.object({
   author: z.string().min(1, 'Nom requis'),
@@ -165,5 +166,35 @@ export const CommentForm = ({
         </Button>
       </form>
     </Form>
+  );
+};
+
+export const CommentFormSkeleton = () => {
+  return (
+    <div className="space-y-4">
+      {/* Name input */}
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-20" /> {/* Label */}
+        <Skeleton className="h-10 w-full" /> {/* Input */}
+      </div>
+
+      {/* Email input */}
+      <div className="space-y-2">
+        <Skeleton className="h-4 w-28" />
+        <Skeleton className="h-10 w-full" />
+      </div>
+
+      {/* Comment textarea with emoji button */}
+      <div className="space-y-2">
+        <div className="flex items-center justify-between">
+          <Skeleton className="h-4 w-24" /> {/* Label */}
+          <Skeleton className="h-8 w-8 rounded-full" /> {/* Emoji button */}
+        </div>
+        <Skeleton className="h-24 w-full" /> {/* Textarea */}
+      </div>
+
+      {/* Submit button */}
+      <Skeleton className="h-10 w-24" />
+    </div>
   );
 };

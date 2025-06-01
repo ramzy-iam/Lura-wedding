@@ -29,7 +29,7 @@ function getRelativeTime(date: Date): string {
   return '';
 }
 
-const MAX_PREVIEW_LENGTH = 70; // adjust this for your preferred preview length
+const MAX_PREVIEW_LENGTH = 100; // adjust this for your preferred preview length
 
 export const CommentItem: React.FC<{ comment: IComment; isLast: boolean }> = ({
   comment,

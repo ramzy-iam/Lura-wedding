@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState, useCallback } from 'react';
 import {
   ArrowDownWideNarrow,
@@ -6,9 +8,9 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { CommentForm, CommentFormModal } from '../forms';
+import { CommentForm, CommentFormModal, CommentFormSkeleton } from '../forms';
 import { CommentItem, CommentSkeleton } from '../comments';
-import { useComments } from '@/hooks/useComments'; // adjust path as needed
+import { useComments } from '@/hooks/useComments';
 import { IComment } from '@/types';
 
 export const CommentSection = () => {
@@ -37,9 +39,11 @@ export const CommentSection = () => {
       {/* Mobile title and add button */}
       <div className="flex w-full items-center justify-between sm:hidden">
         <h2 className="section-heading text-primary">Commentaires</h2>
-        <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>
-          <Plus className="h-4 w-4" />
-        </Button>
+        {!isLoading && (
+          <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>
+            <Plus className="h-4 w-4" />
+          </Button>
+        )}
       </div>
 
       <div className="flex w-full gap-5">
@@ -134,7 +138,11 @@ export const CommentSection = () => {
 
         {/* Desktop inline form */}
         <div className="hidden w-full sm:block">
-          <CommentForm sortDesc={sortDesc} />
+          {isLoading ? (
+            <CommentFormSkeleton />
+          ) : (
+            <CommentForm sortDesc={sortDesc} />
+          )}
         </div>
       </div>
 
