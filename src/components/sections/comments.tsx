@@ -1,5 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { ArrowDownWideNarrow, ArrowUpWideNarrow, Plus } from 'lucide-react';
+import {
+  ArrowDownWideNarrow,
+  ArrowUpWideNarrow,
+  Plus,
+  RotateCcw,
+} from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { CommentForm, CommentFormModal } from '../forms';
 import { CommentItem, CommentSkeleton } from '../comments';
@@ -19,6 +24,7 @@ export const CommentSection = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
+    isFetching,
     isLoading,
     isError,
     refetch,
@@ -43,24 +49,36 @@ export const CommentSection = () => {
               Commentaires
             </h2>
             {!isLoading && data && (
-              <Button
-                variant="text"
-                size="sm"
-                onClick={toggleSort}
-                className="flex cursor-pointer items-center gap-1 text-sm"
-              >
-                {sortDesc ? (
-                  <>
-                    <ArrowDownWideNarrow className="h-4 w-4" />
-                    Plus récent
-                  </>
-                ) : (
-                  <>
-                    <ArrowUpWideNarrow className="h-4 w-4" />
-                    Plus ancien
-                  </>
-                )}
-              </Button>
+              <div className="flex w-full items-center justify-between sm:w-auto">
+                <Button
+                  variant="text"
+                  size="sm"
+                  onClick={toggleSort}
+                  className="flex cursor-pointer items-center gap-1 text-sm"
+                >
+                  {sortDesc ? (
+                    <>
+                      <ArrowDownWideNarrow className="h-4 w-4" />
+                      Plus récent
+                    </>
+                  ) : (
+                    <>
+                      <ArrowUpWideNarrow className="h-4 w-4" />
+                      Plus ancien
+                    </>
+                  )}
+                </Button>
+                <Button
+                  variant="text"
+                  size="sm"
+                  onClick={() => refetch()}
+                  disabled={isFetching}
+                  className="cursor-pointer"
+                  title="Rafraichir"
+                >
+                  <RotateCcw />
+                </Button>
+              </div>
             )}
           </div>
 
@@ -75,7 +93,12 @@ export const CommentSection = () => {
             {isError && (
               <div className="text-red-500">
                 Une erreur est survenue.
-                <Button onClick={() => refetch()} variant="ghost" size="sm">
+                <Button
+                  onClick={() => refetch()}
+                  variant="ghost"
+                  size="sm"
+                  className="ml-2 cursor-pointer"
+                >
                   Réessayer
                 </Button>
               </div>
