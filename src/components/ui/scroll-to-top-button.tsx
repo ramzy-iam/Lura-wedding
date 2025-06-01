@@ -27,7 +27,7 @@ export const ScrollToTopButton = () => {
       size="icon"
       variant="secondary"
       className={cn(
-        'fixed right-6 bottom-6 z-50 cursor-pointer transition-opacity duration-300',
+        'fixed right-6 bottom-6 z-10 cursor-pointer transition-opacity duration-300',
         visible ? 'opacity-100' : 'pointer-events-none opacity-0',
       )}
       aria-label="Scroll to top"

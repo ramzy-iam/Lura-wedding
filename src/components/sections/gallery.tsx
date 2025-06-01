@@ -251,7 +251,7 @@ export const GallerySection = () => {
           {/* Main image with nav arrows and swipe handlers */}
           <div
             {...handlers}
-            className="relative flex flex-1 touch-none items-center justify-center"
+            className="relative z-20 flex flex-1 touch-none items-center justify-center"
           >
             <button
               onClick={showPrev}
