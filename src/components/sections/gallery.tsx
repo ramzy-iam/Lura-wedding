@@ -232,7 +232,7 @@ export const GallerySection = () => {
               />
             </Zoom>
             <div className="bg-opacity-50 pointer-events-none absolute right-2 bottom-2 rounded bg-black px-2 py-1 text-xs text-white md:hidden">
-              Tapotez pour zoom
+              Tapotez pour zoomer
             </div>
 
             <button
