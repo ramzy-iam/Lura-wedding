@@ -27,6 +27,7 @@ export const AgendaList = [
     date: '18/07/2025',
     time: ' 13h',
     location: 'Bambi (Batcham)',
+    url: 'https://maps.app.goo.gl/4yW9o4aShMfJqGnz5',
   },
   {
     title: 'Mariage civil',
@@ -61,6 +62,7 @@ export const AgendaList = [
     date: '26/07/2025',
     time: ' 8h',
     location: 'Hôtel de Ville (Yaoundé)',
+    url: 'https://maps.app.goo.gl/jsewGiheyKvYiGCg8',
   },
   {
     title: 'Bénédiction nuptiale',
@@ -119,6 +121,7 @@ export const AgendaList = [
     date: '26/07/2025',
     time: ' 14h',
     location: 'Club Camtel (Yaoundé)',
+    url: 'https://maps.app.goo.gl/K3tpjTACmMeP924i9',
   },
   {
     title: 'Cocktail',
@@ -195,6 +198,7 @@ export const AgendaList = [
     date: '26/07/2025',
     time: '18h',
     location: 'Club Camtel (Yaoundé)',
+    url: 'https://maps.app.goo.gl/K3tpjTACmMeP924i9',
   },
 ];
 

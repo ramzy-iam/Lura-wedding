@@ -18,7 +18,13 @@ export const FooterSection = () => {
         </div>
       </div>
       <div className="flex flex-col items-center gap-2">
-        <p>Designed by Ritha2ess</p>
+        <a
+          href="https://www.linkedin.com/in/rithe-merveille-essissima/"
+          target="_blank"
+          rel="noreferrer"
+        >
+          Designed by Ritha2ess
+        </a>
         <p>Made with ❤️ by R.</p>
       </div>
     </footer>

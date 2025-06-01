@@ -48,18 +48,23 @@ export const AgendaSection = () => {
             >
               {agenda.icon}
               <h3 className="text-[16px] font-medium">{agenda.title}</h3>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 {AgendaIcons.calendar}
                 <span>{agenda.date}</span>
               </div>
-              <div className="flex gap-3">
+              <div className="flex items-center gap-3">
                 {AgendaIcons.watch}
                 <span>{agenda.time}</span>
               </div>
-              <div className="flex gap-3">
+              <a
+                href={agenda.url}
+                className="flex items-center gap-3"
+                target="_blank"
+                rel="noreferrer"
+              >
                 <span className="w-4">{AgendaIcons.location}</span>
                 <span>{agenda.location}</span>
-              </div>
+              </a>
             </div>
           ))}
         </div>
