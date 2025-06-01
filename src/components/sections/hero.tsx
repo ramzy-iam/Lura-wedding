@@ -1,6 +1,6 @@
 export const HeroSection = () => {
   return (
-    <div
+    <section
       id="hero"
       className="relative flex h-[490px] flex-col items-center justify-end sm:h-[749px] sm:justify-center"
     >

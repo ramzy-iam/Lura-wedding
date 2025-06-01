@@ -1,6 +1,6 @@
 export const GardenSection = () => {
   return (
-    <div
+    <section
       id="garden"
       className="flex w-full flex-col-reverse items-center justify-center gap-6 p-4 sm:grid sm:grid-cols-7 sm:items-start sm:gap-8"
     >
@@ -32,6 +32,6 @@ export const GardenSection = () => {
           nous cette union sacrée, bénie par Celui qui nous a unis.`}
         </p>
       </div>
-    </div>
+    </section>
   );
 };

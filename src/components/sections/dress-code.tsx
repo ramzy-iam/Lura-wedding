@@ -14,7 +14,7 @@ const ColorSet = () => {
 
 export const DressCodeSection = () => {
   return (
-    <div
+    <section
       id="dress-code"
       className="flex flex-col gap-4 px-6 sm:flex-row sm:justify-between sm:gap-[108px] sm:px-32"
     >
@@ -64,6 +64,6 @@ export const DressCodeSection = () => {
         alt="Dress Code"
         className="h-[468.61px] sm:h-[661px]"
       />
-    </div>
+    </section>
   );
 };

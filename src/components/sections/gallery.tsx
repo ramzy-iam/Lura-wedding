@@ -104,7 +104,7 @@ export const GallerySection = () => {
 
   return (
     <>
-      <div id="gallery" className="flex flex-col gap-6">
+      <section id="gallery" className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-4 px-6 text-center sm:px-32">
           <h2 className="section-heading text-primary">
             Des souvenir à partager
@@ -211,7 +211,7 @@ export const GallerySection = () => {
             />
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Carousel Overlay */}
       {isOpen && (

@@ -29,7 +29,7 @@ export const AgendaSection = () => {
   }, [targetDate]);
 
   return (
-    <div
+    <section
       id="agenda"
       className="flex flex-col justify-between gap-6 bg-[url(/images/bg-agenda.jpg)] bg-cover bg-no-repeat px-4 py-10 text-[14px] text-white sm:h-[887px] sm:items-center sm:justify-center sm:gap-12 sm:px-32 sm:py-[100px]"
     >

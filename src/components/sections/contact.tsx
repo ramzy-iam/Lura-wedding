@@ -1,6 +1,6 @@
 export const ContactSection = () => {
   return (
-    <div
+    <section
       id="contact"
       className="relative flex items-center justify-center gap-6 px-4 py-20 sm:p-[128px]"
     >
@@ -56,6 +56,6 @@ export const ContactSection = () => {
         alt="Flower"
         className="absolute -bottom-[12px] left-0 z-[-1] h-[78px] w-[78.02px] sm:-bottom-[25px] sm:h-[317.91px] sm:w-[318px]"
       />
-    </div>
+    </section>
   );
 };
