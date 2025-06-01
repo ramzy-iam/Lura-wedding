@@ -13,6 +13,7 @@ import {
   HistorySection,
   Navbar,
 } from '@/components';
+import { ScrollToTopButton } from '@/components/ui';
 
 export default function Home() {
   return (
@@ -28,6 +29,7 @@ export default function Home() {
         <GallerySection />
         <CommentSection />
       </main>
+      <ScrollToTopButton />
       <ContactSection />
       <FooterSection />
     </div>
