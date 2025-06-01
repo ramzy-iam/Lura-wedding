@@ -15,7 +15,7 @@ type Props = {
 export const CommentFormModal = ({ open, onOpenChange, sortDesc }: Props) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-100svw">
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Ajouter un commentaire</DialogTitle>
         </DialogHeader>

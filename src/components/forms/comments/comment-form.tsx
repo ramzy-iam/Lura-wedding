@@ -67,7 +67,7 @@ export const CommentForm = ({
   const { mutateAsync, isPending } = useCreateComment();
 
   const onSubmit = async (data: CommentSchema) => {
-    const payload = { ...data, email: data.email ?? undefined };
+    const payload = { ...data, email: data.email || undefined };
     await mutateAsync({ data: payload, sortDesc });
     onSuccess?.();
     form.reset();
