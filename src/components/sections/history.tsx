@@ -119,11 +119,11 @@ export const HistorySection = () => {
           />
         </div>
 
-        <div className="h-[432px] overflow-clip rounded-[48px] sm:h-[738px] sm:w-[616px]">
+        <div>
           <img
-            src="/images/history.jpg"
+            src="/images/history.png"
             alt="illustrant notre histoire"
-            className="h-full w-full rounded-[48px] object-cover"
+            className="w-full overflow-clip sm:w-[616px]"
           />
         </div>
       </div>
