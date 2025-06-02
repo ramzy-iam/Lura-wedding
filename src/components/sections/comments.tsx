@@ -51,7 +51,7 @@ export const CommentSection = () => {
         )}
       </div>
 
-      <p className="mb-4 w-full text-sm lg:text-[1rem]">
+      <p className="mb-4 w-full">
         {
           " Une pensée, un souvenir, un mot d'amour… Laissez un message aux mariés que tous pourront lire. "
         }
