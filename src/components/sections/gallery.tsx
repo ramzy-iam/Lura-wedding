@@ -107,7 +107,7 @@ export const GallerySection = () => {
       <section id="gallery" className="flex flex-col gap-6">
         <div className="flex flex-col items-center gap-4 px-6 text-center sm:px-32">
           <h2 className="section-heading text-primary">
-            Des souvenir à partager
+            Des souvenirs à partager
           </h2>
           <p className="max-w-[878px]">
             Plongez dans notre histoire à travers des clichés inoubliables, de
