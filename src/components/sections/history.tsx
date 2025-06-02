@@ -84,15 +84,15 @@ export const HistorySection = () => {
       {/* Section Histoire */}
       <div
         id="history"
-        className="flex flex-col justify-between gap-6 px-4 sm:flex-row sm:gap-[108px] sm:px-32"
+        className="flex flex-col justify-between gap-6 px-4 md:flex-row md:px-12 lg:gap-[108px] 2xl:px-32"
       >
-        <div className="flex flex-col gap-6 sm:w-[533px] sm:pr-32">
-          <div className="flex h-[59px] gap-6 sm:h-auto">
+        <div className="flex flex-col gap-6 lg:w-[533px] 2xl:pr-32">
+          <div className="flex h-[59px] items-center gap-6 lg:h-auto">
             <h2 className="section-heading text-primary">Notre Histoire</h2>
             <img
               src="/images/flower.png"
               alt="Décoration florale"
-              className="h-full md:hidden"
+              className="h-full lg:hidden"
             />
           </div>
 
@@ -115,15 +115,15 @@ export const HistorySection = () => {
           <img
             src="/images/flower.png"
             alt="Décoration florale"
-            className="hidden h-auto w-full sm:inline"
+            className="hidden h-auto w-[20%] lg:inline lg:h-auto lg:w-full"
           />
         </div>
 
-        <div className="h-[432px] overflow-clip rounded-[48px] sm:h-[738px] sm:w-[616px]">
+        <div>
           <img
-            src="/images/history.jpg"
+            src="/images/history.png"
             alt="illustrant notre histoire"
-            className="h-full w-full rounded-[48px] object-cover"
+            className="w-full overflow-clip lg:w-[616px]"
           />
         </div>
       </div>

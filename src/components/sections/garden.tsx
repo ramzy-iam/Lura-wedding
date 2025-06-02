@@ -2,13 +2,13 @@ export const GardenSection = () => {
   return (
     <section
       id="garden"
-      className="flex w-full flex-col-reverse items-center justify-center gap-6 p-4 sm:grid sm:grid-cols-7 sm:items-start sm:gap-8"
+      className="flex w-full flex-col-reverse items-center justify-center gap-6 p-4 md:grid md:grid-cols-7 md:gap-8 lg:items-start"
     >
-      <div className="w-full sm:col-span-4">
+      <div className="w-full md:col-span-3 lg:col-span-4">
         <img src="/images/garden.png" alt="Garden" className="h-auto w-full" />
       </div>
 
-      <div className="flex w-full flex-col gap-6 sm:col-span-3 sm:px-6">
+      <div className="flex w-full flex-col gap-6 md:col-span-4 md:px-6 lg:col-span-3">
         <h2 className="section-heading text-primary text-left">
           Chers Proches,
         </h2>

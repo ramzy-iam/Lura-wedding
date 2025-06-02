@@ -44,12 +44,12 @@ const ContactGroup = ({
 
 export const ClothesSection = () => {
   return (
-    <div className="flex flex-col gap-6 p-4 sm:grid sm:grid-cols-2 sm:px-32">
-      <div className="flex flex-col gap-4 sm:col-span-1">
-        <h2 className="text-primary text-left text-[36px]">
+    <div className="flex flex-col gap-6 p-4 md:px-12 lg:grid lg:grid-cols-2 2xl:px-32">
+      <div className="flex flex-col gap-4 lg:col-span-1">
+        <h2 className="text-primary section-heading text-left">
           {"La Belle Turquoise vous fait un clin d'oeil"}
         </h2>
-        <div className="h-[181px] overflow-hidden rounded-[28px] sm:h-[322px]">
+        <div className="h-[181px] overflow-hidden rounded-[28px] lg:h-[322px]">
           <img
             src="/images/turquoise.jpg"
             alt="Turquoise"
@@ -61,17 +61,17 @@ export const ClothesSection = () => {
         </p>
       </div>
 
-      <div className="flex flex-col gap-6 sm:col-span-1 sm:gap-4">
+      <div className="flex flex-col gap-6 lg:col-span-1 lg:gap-4">
         <div className="flex items-center rounded-[28px] bg-[#8A1049] p-7 text-white">
           <div className="flex flex-col gap-5">
             <h3 className="text-[24px]">{'Comment la récupérer ?'}</h3>
-            <div className="flex flex-col gap-5 sm:flex-row">
+            <div className="xs:flex-row flex flex-col gap-5">
               <ContactGroup
                 city={TurquoiseContact.group1.city}
                 list={TurquoiseContact.group1.list}
                 withBorder
               />
-              <div className="flex flex-1 flex-col sm:justify-between">
+              <div className="xs:justify-between flex flex-1 flex-col">
                 <ContactGroup
                   city={TurquoiseContact.group2.city}
                   list={TurquoiseContact.group2.list}
