@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-export const Logo = () => {
+export const Logo = ({ className }: { className?: string }) => {
   return (
-    <Link href="/">
+    <Link href="/" className={className}>
       <svg
         width="61"
         height="40"

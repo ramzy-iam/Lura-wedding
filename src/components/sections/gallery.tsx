@@ -68,7 +68,7 @@ export const GallerySection = () => {
   return (
     <>
       <section id="gallery" className="flex flex-col gap-6">
-        <div className="flex flex-col items-center gap-4 px-6 text-center sm:px-32">
+        <div className="flex flex-col items-center gap-4 px-6 text-center lg:px-32">
           <h2 className="section-heading text-primary">
             Des souvenirs à partager
           </h2>
@@ -82,35 +82,35 @@ export const GallerySection = () => {
         </div>
 
         {/* Image Grid (sans map) */}
-        <div className="grid h-[1208.07px] grid-cols-2 grid-rows-16 gap-2 sm:mx-auto sm:h-[2264px] sm:grid-cols-12 sm:grid-rows-20 sm:gap-4">
-          <div className="col-span-1 row-span-3 sm:col-span-5 sm:row-span-6">
+        <div className="grid h-[1208.07px] grid-cols-2 grid-rows-16 gap-2 sm:h-[2264px] md:mx-auto md:gap-4 lg:grid-cols-12 lg:grid-rows-20">
+          <div className="col-span-1 row-span-3 sm:row-span-5 lg:col-span-5 lg:row-span-6">
             <img
               src={gridImages[0]}
               onClick={() => openCarousel(0)}
-              className="h-full w-full cursor-pointer object-cover object-center"
+              className="h-full w-full cursor-pointer object-cover object-center sm:object-[0%_25%]"
               alt="Gallery"
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-4 sm:col-span-4 sm:row-span-5">
+          <div className="col-span-1 row-span-4 lg:col-span-4 lg:row-span-5">
             <img
               src={gridImages[1]}
               onClick={() => openCarousel(1)}
-              className="h-full w-full cursor-pointer object-cover object-center"
+              className="h-full w-full cursor-pointer object-cover object-center sm:object-[25%_25%]"
               alt="Gallery"
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-3 sm:col-span-3 sm:row-span-5">
+          <div className="col-span-1 row-span-3 lg:col-span-3 lg:row-span-5">
             <img
               src={gridImages[2]}
               onClick={() => openCarousel(2)}
-              className="h-full w-full cursor-pointer object-cover object-center"
+              className="h-full w-full cursor-pointer object-cover object-center sm:object-[0%_45%]"
               alt="Gallery"
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-2 sm:col-span-5 sm:row-span-4 sm:row-start-7">
+          <div className="col-span-1 row-span-2 lg:col-span-5 lg:row-span-4 lg:row-start-7">
             <img
               src={gridImages[3]}
               onClick={() => openCarousel(3)}
@@ -119,7 +119,7 @@ export const GallerySection = () => {
               draggable={false}
             />
           </div>
-          <div className="col-span-2 row-span-4 sm:col-span-7 sm:row-span-5">
+          <div className="col-span-2 row-span-4 sm:object-[25%_25%] lg:col-span-7 lg:row-span-5">
             <img
               src={gridImages[4]}
               onClick={() => openCarousel(4)}
@@ -128,7 +128,7 @@ export const GallerySection = () => {
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-5 sm:col-span-3 sm:row-span-5">
+          <div className="col-span-1 row-span-5 lg:col-span-3 lg:row-span-5">
             <img
               src={gridImages[5]}
               onClick={() => openCarousel(5)}
@@ -137,7 +137,7 @@ export const GallerySection = () => {
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-2 sm:col-span-6 sm:row-span-5">
+          <div className="col-span-1 row-span-2 lg:col-span-6 lg:row-span-5">
             <img
               src={gridImages[6]}
               onClick={() => openCarousel(6)}
@@ -146,29 +146,29 @@ export const GallerySection = () => {
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-4 sm:col-span-3 sm:row-span-5">
+          <div className="col-span-1 row-span-4 lg:col-span-3 lg:row-span-5">
             <img
               src={gridImages[7]}
               onClick={() => openCarousel(7)}
-              className="h-full w-full cursor-pointer object-cover object-center"
+              className="h-full w-full cursor-pointer object-cover object-center sm:object-[0%_20%]"
               alt="Gallery"
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-3 sm:col-span-4 sm:row-span-5">
+          <div className="col-span-1 row-span-3 lg:col-span-4 lg:row-span-5">
             <img
               src={gridImages[8]}
               onClick={() => openCarousel(8)}
-              className="h-full w-full cursor-pointer object-cover object-center sm:object-[10%_30%]"
+              className="h-full w-full cursor-pointer object-cover object-center lg:object-[10%_30%]"
               alt="Gallery"
               draggable={false}
             />
           </div>
-          <div className="col-span-1 row-span-2 sm:col-span-8 sm:row-span-5">
+          <div className="col-span-1 row-span-2 lg:col-span-8 lg:row-span-5">
             <img
               src={gridImages[9]}
               onClick={() => openCarousel(9)}
-              className="h-full w-full cursor-pointer object-cover object-center sm:object-[10%_40%]"
+              className="h-full w-full cursor-pointer object-cover object-center lg:object-[10%_40%]"
               alt="Gallery"
               draggable={false}
             />
@@ -226,7 +226,7 @@ export const GallerySection = () => {
                 draggable={false}
               />
             </Zoom>
-            <div className="bg-opacity-50 pointer-events-none absolute right-2 bottom-2 rounded bg-black px-2 py-1 text-xs text-white md:hidden">
+            <div className="bg-opacity-50 pointer-events-none absolute right-2 bottom-2 rounded bg-black px-2 py-1 text-xs text-white lg:hidden">
               Tapotez pour zoomer
             </div>
 

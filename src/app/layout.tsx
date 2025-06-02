@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Providers } from '@/app/providers';
 import './globals.css';
+import { Toaster } from 'sonner';
 
 export const metadata: Metadata = {
   title: 'Lura',
@@ -14,8 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className="text-[14px] sm:text-[18px]">
+      <body className="text-body">
         <Providers>{children}</Providers>
+        <Toaster />
       </body>
     </html>
   );

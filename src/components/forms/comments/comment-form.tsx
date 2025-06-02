@@ -33,7 +33,7 @@ const commentSchema = z.object({
   comment: z
     .string()
     .min(1, 'Commentaire requis')
-    .max(500, 'Le commentaire doit contenir au maximum 500 caractères'),
+    .max(3000, 'Le commentaire doit contenir au maximum 3000 caractères'),
 });
 
 type CommentSchema = z.infer<typeof commentSchema>;
@@ -70,8 +70,8 @@ export const CommentForm = ({
   const onSubmit = async (data: CommentSchema) => {
     const payload = { ...data, email: data.email || undefined };
     await mutateAsync({ data: payload, sortDesc });
-    onSuccess?.();
     form.reset();
+    onSuccess?.();
   };
 
   return (
@@ -112,7 +112,7 @@ export const CommentForm = ({
           render={({ field }) => (
             <FormItem className="relative">
               <div className="flex items-center justify-between">
-                <FormLabel>Commentaire</FormLabel>
+                <FormLabel>Votre message</FormLabel>
                 <div className="flex items-center gap-2">
                   <Popover
                     open={showEmojiPicker}
@@ -148,7 +148,7 @@ export const CommentForm = ({
               </div>
               <FormControl className="relative">
                 <Textarea
-                  placeholder="Écrivez votre commentaire..."
+                  placeholder="Écrivez votre message..."
                   {...field}
                   ref={(el) => {
                     field.ref(el);
@@ -161,7 +161,7 @@ export const CommentForm = ({
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isPending}>
+        <Button type="submit" disabled={isPending} className="cursor-pointer">
           {isPending ? 'Envoi...' : 'Envoyer'}
         </Button>
       </form>

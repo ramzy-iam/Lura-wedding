@@ -35,19 +35,33 @@ export const CommentSection = () => {
   const comments: IComment[] = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
-    <section className="relative flex flex-col items-center gap-6 px-4 sm:items-start sm:px-[128px] sm:py-20">
+    <section className="relative flex flex-col items-center gap-6 px-4 md:px-12 lg:items-start 2xl:px-32">
       {/* Mobile title and add button */}
-      <div className="flex w-full items-center justify-between sm:hidden">
-        <h2 className="section-heading text-primary">Commentaires</h2>
+      <div className="flex w-full items-center justify-between">
+        <h2 className="section-heading text-primary">Coin Tendresse</h2>
         {!isLoading && (
-          <Button size="sm" variant="secondary" onClick={() => setOpen(true)}>
+          <Button
+            size="sm"
+            variant="secondary"
+            onClick={() => setOpen(true)}
+            className="cursor-pointer lg:hidden"
+          >
             <Plus className="h-4 w-4" />
           </Button>
         )}
       </div>
 
+      <p className="mb-4 w-full text-sm lg:text-[1rem]">
+        {
+          " Une pensée, un souvenir, un mot d'amour… Laissez un message aux mariés que tous pourront lire. "
+        }
+        <span className="font-semibold lg:hidden">
+          Touchez le bouton en haut à droite pour ajouter le vôtre.
+        </span>
+      </p>
+
       <div className="flex w-full gap-5">
-        <div className="border-accent2 max-h-[500px] w-full overflow-y-auto rounded-md border sm:border-0">
+        <div className="border-accent2 max-h-[500px] w-full overflow-y-auto rounded-md border lg:border-0">
           {isFetchingNextPage && (
             <div className="w-full">
               <div className="h-1.5 w-full overflow-hidden bg-pink-100">
@@ -56,11 +70,8 @@ export const CommentSection = () => {
             </div>
           )}
           <div className="sticky top-0 z-10 flex items-center justify-between border-b bg-white px-4 py-3">
-            <h2 className="section-heading text-primary hidden sm:block">
-              Commentaires
-            </h2>
             {!isLoading && data && (
-              <div className="flex w-full items-center justify-between sm:w-auto">
+              <div className="flex w-full items-center justify-between">
                 <Button
                   variant="text"
                   size="sm"
@@ -137,11 +148,17 @@ export const CommentSection = () => {
         </div>
 
         {/* Desktop inline form */}
-        <div className="hidden w-full sm:block">
+        <div className="hidden w-full lg:block">
           {isLoading ? (
             <CommentFormSkeleton />
           ) : (
-            <CommentForm sortDesc={sortDesc} />
+            <CommentForm
+              sortDesc={true}
+              onSuccess={() => {
+                setSortDesc(true);
+                refetch();
+              }}
+            />
           )}
         </div>
       </div>
@@ -150,7 +167,11 @@ export const CommentSection = () => {
       <CommentFormModal
         open={open}
         onOpenChange={setOpen}
-        sortDesc={sortDesc}
+        sortDesc={true}
+        onSuccess={() => {
+          setSortDesc(true);
+          refetch();
+        }}
       />
     </section>
   );

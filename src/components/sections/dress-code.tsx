@@ -16,7 +16,7 @@ export const DressCodeSection = () => {
   return (
     <section
       id="dress-code"
-      className="flex flex-col gap-4 px-6 sm:flex-row sm:justify-between sm:gap-[108px] sm:px-32"
+      className="flex flex-col gap-4 px-4 sm:flex-row md:justify-between md:gap-2 md:px-12 lg:gap-[108px] 2xl:px-32"
     >
       <div className="flex flex-col gap-4">
         <h2 className="section-heading text-primary text-left">
@@ -62,7 +62,7 @@ export const DressCodeSection = () => {
       <img
         src="/images/dress-code-mobile.png"
         alt="Dress Code"
-        className="h-[468.61px] sm:h-[661px]"
+        className="sm:w-[35%] sm:object-contain xl:h-[661px] xl:w-full"
       />
     </section>
   );

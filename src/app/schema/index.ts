@@ -5,7 +5,7 @@ export const commentSchema = z.object({
   comment: z
     .string()
     .min(1, 'Comment is required')
-    .max(500, 'Comment must be at most 500 characters'),
+    .max(3000, 'Comment must be at most 3000 characters'),
   email: z.string().email().optional().nullable(),
 });
 

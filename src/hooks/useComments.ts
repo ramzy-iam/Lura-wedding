@@ -5,6 +5,7 @@ import {
 } from '@tanstack/react-query';
 import { api } from '@/lib/api';
 import { CommentsResponse, CreateComment, IComment } from '@/types';
+import { toast } from 'sonner';
 
 const COMMENTS_PER_PAGE = 10;
 
@@ -44,6 +45,9 @@ export const useCreateComment = () => {
     },
     onSuccess: (_, { sortDesc }) => {
       queryClient.invalidateQueries({ queryKey: ['comments', sortDesc] });
+    },
+    onError: () => {
+      toast.error("Votre message n'a pas pu être envoyé, veuillez réessayer.");
     },
   });
 };
