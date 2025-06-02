@@ -31,12 +31,12 @@ export const AgendaSection = () => {
   return (
     <section
       id="agenda"
-      className="flex flex-col justify-between gap-6 bg-[url(/images/bg-agenda.jpg)] bg-cover bg-no-repeat px-4 py-10 text-[14px] text-white sm:h-[887px] sm:items-center sm:justify-center sm:gap-12 sm:px-32 sm:py-[100px]"
+      className="flex flex-col justify-between gap-6 bg-[url(/images/bg-agenda.jpg)] bg-cover bg-no-repeat px-4 py-10 text-white sm:h-[887px] sm:items-center sm:justify-center sm:gap-12 sm:px-32 sm:py-[100px]"
     >
       <div className="bg-primary/71 flex w-full flex-col items-center gap-8 rounded-[28px] px-4 py-6 pr-2 sm:p-12">
         <div className="flex max-w-[516px] flex-col items-center gap-[21px]">
           <h2 className="section-heading text-center">Agenda</h2>
-          <p className="text-center text-[16px]">
+          <p className="text-center">
             Venez partager avec nous ces moments spéciaux
           </p>
         </div>
@@ -47,7 +47,7 @@ export const AgendaSection = () => {
               className="flex flex-col gap-3 sm:col-span-1"
             >
               {agenda.icon}
-              <h3 className="text-[16px] font-medium">{agenda.title}</h3>
+              <h3 className="font-medium">{agenda.title}</h3>
               <div className="flex items-center gap-3">
                 {AgendaIcons.calendar}
                 <span>{agenda.date}</span>

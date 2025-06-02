@@ -35,7 +35,7 @@ export const CommentSection = () => {
   const comments: IComment[] = data?.pages.flatMap((page) => page.data) ?? [];
 
   return (
-    <section className="relative flex flex-col items-center gap-6 px-4 py-20 sm:items-start sm:px-[128px] sm:py-20">
+    <section className="relative flex flex-col items-center gap-6 px-4 sm:items-start sm:px-[128px] sm:py-20">
       {/* Mobile title and add button */}
       <div className="flex w-full items-center justify-between sm:hidden">
         <h2 className="section-heading text-primary">Commentaires</h2>

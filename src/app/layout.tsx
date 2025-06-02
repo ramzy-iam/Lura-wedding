@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body>
+      <body className="text-[14px] sm:text-[18px]">
         <Providers>{children}</Providers>
       </body>
     </html>

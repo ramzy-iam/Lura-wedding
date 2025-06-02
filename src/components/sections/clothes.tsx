@@ -46,7 +46,7 @@ export const ClothesSection = () => {
   return (
     <div className="flex flex-col gap-6 p-4 sm:grid sm:grid-cols-2 sm:px-32">
       <div className="flex flex-col gap-4 sm:col-span-1">
-        <h2 className="text-primary text-left text-[36px]">
+        <h2 className="text-primary section-heading text-left">
           {"La Belle Turquoise vous fait un clin d'oeil"}
         </h2>
         <div className="h-[181px] overflow-hidden rounded-[28px] sm:h-[322px]">

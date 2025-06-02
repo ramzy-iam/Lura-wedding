@@ -24,7 +24,6 @@ export const GallerySection = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const autoplayRef = useRef<NodeJS.Timeout | null>(null);
   const previewContainerRef = useRef<HTMLDivElement>(null);
   const previewImageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
@@ -39,14 +38,12 @@ export const GallerySection = () => {
     setCurrentIndex((prev) =>
       prev === 0 ? carouselImages.length - 1 : prev - 1,
     );
-    restartAutoplay();
   }, []);
 
   const showNext = useCallback(() => {
     setCurrentIndex((prev) =>
       prev === carouselImages.length - 1 ? 0 : prev + 1,
     );
-    restartAutoplay();
   }, []);
 
   const handlers = useSwipeable({
@@ -56,40 +53,6 @@ export const GallerySection = () => {
     trackMouse: true,
   });
 
-  // Pause autoplay
-  const pauseAutoplay = () => {
-    if (autoplayRef.current) {
-      clearInterval(autoplayRef.current);
-      autoplayRef.current = null;
-    }
-  };
-
-  // Resume autoplay
-  const resumeAutoplay = () => {
-    autoplayRef.current ??= setInterval(() => {
-      setCurrentIndex((prev) =>
-        prev === carouselImages.length - 1 ? 0 : prev + 1,
-      );
-    }, 3000);
-  };
-
-  // Restart autoplay on manual navigation
-  const restartAutoplay = () => {
-    pauseAutoplay();
-    resumeAutoplay();
-  };
-
-  // Manage autoplay on open/close
-  useEffect(() => {
-    if (isOpen) {
-      resumeAutoplay();
-    } else {
-      pauseAutoplay();
-    }
-    return pauseAutoplay;
-  }, [isOpen]);
-
-  // Scroll preview strip to active image
   useEffect(() => {
     if (!previewContainerRef.current) return;
     const activeImage = previewImageRefs.current[currentIndex];
@@ -216,7 +179,6 @@ export const GallerySection = () => {
       {/* Carousel Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur">
-          {/* Close button */}
           <button
             onClick={closeCarousel}
             className="absolute top-4 right-4 z-10 cursor-pointer text-white hover:text-red-400"
@@ -224,7 +186,6 @@ export const GallerySection = () => {
             <X size={36} />
           </button>
 
-          {/* Preview Strip */}
           <div
             ref={previewContainerRef}
             className="no-scrollbar mt-16 mb-4 flex max-w-[90svw] gap-2 overflow-x-auto overflow-y-hidden px-4"
@@ -238,9 +199,7 @@ export const GallerySection = () => {
                   previewImageRefs.current[index] = el;
                 }}
                 className={`h-16 w-auto cursor-pointer rounded-md object-cover transition-all duration-200 ${
-                  currentIndex === index
-                    ? 'scale-105 ring-4 ring-[#FF6FAA]'
-                    : 'opacity-60 hover:opacity-100'
+                  currentIndex === index ? '' : 'opacity-60 hover:opacity-100'
                 }`}
                 alt={`Preview ${index + 1}`}
                 draggable={false}
@@ -248,14 +207,13 @@ export const GallerySection = () => {
             ))}
           </div>
 
-          {/* Main image with nav arrows and swipe handlers */}
           <div
             {...handlers}
             className="relative z-20 flex flex-1 touch-none items-center justify-center"
           >
             <button
               onClick={showPrev}
-              className="absolute top-1/2 -left-1 -translate-y-1/2 text-white hover:text-gray-300"
+              className="absolute top-1/2 -left-1 -translate-y-1/2 cursor-pointer text-white hover:text-gray-300"
             >
               <ChevronLeft size={48} />
             </button>
@@ -266,10 +224,6 @@ export const GallerySection = () => {
                 className="max-h-[75svh] max-w-[90svw] rounded-lg shadow-xl select-none"
                 alt={`Gallery ${currentIndex + 1}`}
                 draggable={false}
-                onMouseEnter={pauseAutoplay}
-                onMouseLeave={resumeAutoplay}
-                onTouchStart={pauseAutoplay}
-                onTouchEnd={resumeAutoplay}
               />
             </Zoom>
             <div className="bg-opacity-50 pointer-events-none absolute right-2 bottom-2 rounded bg-black px-2 py-1 text-xs text-white md:hidden">
@@ -278,7 +232,7 @@ export const GallerySection = () => {
 
             <button
               onClick={showNext}
-              className="absolute top-1/2 -right-1 -translate-y-1/2 text-white hover:text-gray-600"
+              className="absolute top-1/2 -right-1 -translate-y-1/2 cursor-pointer text-white hover:text-gray-600"
             >
               <ChevronRight size={48} />
             </button>

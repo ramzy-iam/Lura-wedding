@@ -87,7 +87,7 @@ export const HistorySection = () => {
         className="flex flex-col justify-between gap-6 px-4 sm:flex-row sm:gap-[108px] sm:px-32"
       >
         <div className="flex flex-col gap-6 sm:w-[533px] sm:pr-32">
-          <div className="flex h-[59px] gap-6 sm:h-auto">
+          <div className="flex h-[59px] items-center gap-6 sm:h-auto">
             <h2 className="section-heading text-primary">Notre Histoire</h2>
             <img
               src="/images/flower.png"
