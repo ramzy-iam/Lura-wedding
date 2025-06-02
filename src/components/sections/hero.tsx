@@ -11,7 +11,7 @@ export const HeroSection = () => {
           alt="Hero"
         />
       </div>
-      <div className="flex h-[242px] w-[361px] flex-col items-start gap-2 rounded-[28px] bg-white/85 p-6 shadow-[0_4px_4px_rgba(0,0,0,0.06)] sm:w-[618px] md:h-auto lg:w-auto">
+      <div className="flex h-[242px] w-[361px] flex-col items-start gap-2 rounded-[28px] bg-white/85 p-6 shadow-[0_4px_4px_rgba(0,0,0,0.06)] sm:w-[618px] md:h-auto lg:mt-[350px] lg:w-auto">
         <h1 className="font-satisfy text-primary w-full text-center text-[32px]">
           {"Bienvenue dans le Jardin d'Éden de Checo & Chouquette"}
         </h1>
