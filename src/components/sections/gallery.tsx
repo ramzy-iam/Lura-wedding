@@ -119,7 +119,7 @@ export const GallerySection = () => {
         </div>
 
         {/* Image Grid (sans map) */}
-        <div className="grid h-[1208.07px] grid-cols-2 grid-rows-16 gap-2 sm:container sm:mx-auto sm:h-[2264px] sm:grid-cols-12 sm:grid-rows-20 sm:gap-4">
+        <div className="grid h-[1208.07px] grid-cols-2 grid-rows-16 gap-2 sm:mx-auto sm:h-[2264px] sm:grid-cols-12 sm:grid-rows-20 sm:gap-4">
           <div className="col-span-1 row-span-3 sm:col-span-5 sm:row-span-6">
             <img
               src={gridImages[0]}
