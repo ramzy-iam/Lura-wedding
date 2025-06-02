@@ -20,7 +20,7 @@ export const ContactSection = () => {
         <div className="flex flex-col items-center gap-6">
           <div className="flex flex-col gap-3">
             <p>Téléphone</p>
-            <div className="space-x-4 text-center text-[24px] font-medium">
+            <div className="space-x-4 text-center font-medium md:text-[24px]">
               <a
                 href="tel:+237656463545"
                 className="hover:text-primary"
@@ -43,7 +43,7 @@ export const ContactSection = () => {
             <p>Email</p>
             <a
               href="mailto:luluministries@gmail.com"
-              className="hover:primary text-[24px] font-medium"
+              className="hover:primary font-medium md:text-[24px]"
               aria-label="Envoyer un email à luluministries@gmail.com"
             >
               luluministries@gmail.com
