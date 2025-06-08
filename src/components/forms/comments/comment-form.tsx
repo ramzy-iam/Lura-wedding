@@ -191,7 +191,7 @@ export const CommentForm = ({
       <AlertDialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>Confirmez l'envoi</AlertDialogTitle>
+            <AlertDialogTitle>{"Confirmez l'envoi"}</AlertDialogTitle>
             <AlertDialogDescription>
               Ce message sera public, non modifiable, alors prenez un moment
               pour vérifier.
