@@ -44,7 +44,7 @@ export const AgendaSection = () => {
           {AgendaList.map((agenda) => (
             <div
               key={agenda.title}
-              className="flex flex-col gap-3 lg:col-span-1"
+              className="flex h-full flex-col gap-3 lg:col-span-1"
             >
               {agenda.icon}
               <h3 className="font-medium">{agenda.title}</h3>

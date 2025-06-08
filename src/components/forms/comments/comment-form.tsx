@@ -26,14 +26,24 @@ import { useRef, useState } from 'react';
 import fr from '@emoji-mart/data/i18n/fr.json';
 import { useCreateComment } from '@/hooks';
 import { Skeleton } from '@/components/ui/skeleton';
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+  AlertDialogTitle,
+  AlertDialogDescription,
+} from '@/components/ui/alert-dialog';
 
 const commentSchema = z.object({
   author: z.string().min(1, 'Nom requis'),
   email: z.string().email('Email invalide').optional().or(z.literal('')),
   comment: z
     .string()
-    .min(1, 'Commentaire requis')
-    .max(3000, 'Le commentaire doit contenir au maximum 3000 caractères'),
+    .min(1, 'Message requis')
+    .max(3000, 'Le message doit contenir au maximum 3000 caractères'),
 });
 
 type CommentSchema = z.infer<typeof commentSchema>;
@@ -56,6 +66,8 @@ export const CommentForm = ({
 
   const textareaRef = useRef<HTMLTextAreaElement | null>(null);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
+  const [pendingData, setPendingData] = useState<CommentSchema | null>(null);
 
   const insertEmoji = (emoji: { native: string }) => {
     const current = form.getValues('comment') ?? '';
@@ -67,53 +79,62 @@ export const CommentForm = ({
 
   const { mutateAsync, isPending } = useCreateComment();
 
-  const onSubmit = async (data: CommentSchema) => {
-    const payload = { ...data, email: data.email || undefined };
+  const handleConfirm = async () => {
+    if (!pendingData) return;
+
+    const payload = { ...pendingData, email: pendingData.email || undefined };
     await mutateAsync({ data: payload, sortDesc });
     form.reset();
+    setShowConfirmModal(false);
+    setPendingData(null);
     onSuccess?.();
   };
 
+  const handleRequestSubmit = (data: CommentSchema) => {
+    setPendingData(data);
+    setShowConfirmModal(true);
+  };
+
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="max-w-full space-y-4"
-      >
-        <FormField
-          control={form.control}
-          name="author"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Nom</FormLabel>
-              <FormControl>
-                <Input placeholder="Votre nom" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="email"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Email (optionnel)</FormLabel>
-              <FormControl>
-                <Input placeholder="email@example.com" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="comment"
-          render={({ field }) => (
-            <FormItem className="relative">
-              <div className="flex items-center justify-between">
-                <FormLabel>Votre message</FormLabel>
-                <div className="flex items-center gap-2">
+    <>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(handleRequestSubmit)}
+          className="max-w-full space-y-4"
+        >
+          <FormField
+            control={form.control}
+            name="author"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Nom</FormLabel>
+                <FormControl>
+                  <Input placeholder="Votre nom" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email (optionnel)</FormLabel>
+                <FormControl>
+                  <Input placeholder="email@example.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="comment"
+            render={({ field }) => (
+              <FormItem className="relative">
+                <div className="flex items-center justify-between">
+                  <FormLabel>Votre message</FormLabel>
                   <Popover
                     open={showEmojiPicker}
                     onOpenChange={setShowEmojiPicker}
@@ -145,27 +166,46 @@ export const CommentForm = ({
                     </PopoverContent>
                   </Popover>
                 </div>
-              </div>
-              <FormControl className="relative">
-                <Textarea
-                  placeholder="Écrivez votre message..."
-                  {...field}
-                  ref={(el) => {
-                    field.ref(el);
-                    textareaRef.current = el;
-                  }}
-                  className="max-h-48"
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <Button type="submit" disabled={isPending} className="cursor-pointer">
-          {isPending ? 'Envoi...' : 'Envoyer'}
-        </Button>
-      </form>
-    </Form>
+                <FormControl className="relative">
+                  <Textarea
+                    placeholder="Écrivez votre message..."
+                    {...field}
+                    ref={(el) => {
+                      field.ref(el);
+                      textareaRef.current = el;
+                    }}
+                    className="max-h-48"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" disabled={isPending} className="cursor-pointer">
+            {isPending ? 'Envoi...' : 'Envoyer'}
+          </Button>
+        </form>
+      </Form>
+
+      {/* Modal de confirmation */}
+      <AlertDialog open={showConfirmModal} onOpenChange={setShowConfirmModal}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Confirmez l'envoi</AlertDialogTitle>
+            <AlertDialogDescription>
+              Ce message sera public, non modifiable, alors prenez un moment
+              pour vérifier.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel disabled={isPending}>Annuler</AlertDialogCancel>
+            <AlertDialogAction onClick={handleConfirm} disabled={isPending}>
+              Envoyer
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </>
   );
 };
 

@@ -104,45 +104,58 @@ export const CommentSection = () => {
             )}
           </div>
 
-          <div className="space-y-4 p-4">
-            {isLoading && (
+          <div className="space-y-4 p-4 lg:h-[70%]">
+            {isLoading ? (
               <>
                 <CommentSkeleton />
                 <CommentSkeleton />
                 <CommentSkeleton />
               </>
-            )}
-            {isError && (
-              <div className="text-red-500">
-                Une erreur est survenue.
-                <Button
-                  onClick={() => refetch()}
-                  variant="ghost"
-                  size="sm"
-                  className="ml-2 cursor-pointer"
-                >
-                  Réessayer
-                </Button>
-              </div>
-            )}
+            ) : (
+              <>
+                {isError && (
+                  <div className="text-red-500">
+                    Une erreur est survenue.
+                    <Button
+                      onClick={() => refetch()}
+                      variant="ghost"
+                      size="sm"
+                      className="ml-2 cursor-pointer"
+                    >
+                      Réessayer
+                    </Button>
+                  </div>
+                )}
 
-            {comments.map((comment, idx) => (
-              <CommentItem
-                key={`${comment.id}-${idx}`}
-                comment={comment}
-                isLast={idx === comments.length - 1}
-              />
-            ))}
+                {comments?.length ? (
+                  comments.map((comment, idx) => (
+                    <CommentItem
+                      key={`${comment.id}-${idx}`}
+                      comment={comment}
+                      isLast={idx === comments.length - 1}
+                    />
+                  ))
+                ) : (
+                  <div className="flex h-full items-center">
+                    <p className="flex-1 text-center">
+                      {'À vous de jouer ! 🥳'}
+                      <br />
+                      <span>Laissez le tout premier mot aux mariés</span>
+                    </p>
+                  </div>
+                )}
 
-            {hasNextPage && (
-              <Button
-                onClick={() => fetchNextPage()}
-                disabled={isFetchingNextPage}
-                variant="text"
-                className="bg-navbar-background w-full cursor-pointer"
-              >
-                {isFetchingNextPage ? 'Chargement...' : 'Afficher plus'}
-              </Button>
+                {hasNextPage && (
+                  <Button
+                    onClick={() => fetchNextPage()}
+                    disabled={isFetchingNextPage}
+                    variant="text"
+                    className="bg-navbar-background w-full cursor-pointer"
+                  >
+                    {isFetchingNextPage ? 'Chargement...' : 'Afficher plus'}
+                  </Button>
+                )}
+              </>
             )}
           </div>
         </div>
