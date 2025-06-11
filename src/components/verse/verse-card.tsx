@@ -5,7 +5,7 @@ interface VerseCardProps {
 
 export default function VerseCard({ verse, reference }: VerseCardProps) {
   return (
-    <main className="relative mx-auto flex min-h-screen items-center justify-center px-4 py-8">
+    <main className="relative mx-auto flex min-h-svh items-center justify-center px-4 py-8">
       <img
         src="/images/flower.png"
         alt="Décoration florale"
