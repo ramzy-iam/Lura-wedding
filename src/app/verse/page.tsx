@@ -36,7 +36,7 @@ export default function VersePage() {
         {"💖 Un verset d'amour choisi rien que pour toi..."}
       </p>
 
-      <div className="relative z-10 w-full max-w-2xl rounded-2xl bg-gradient-to-br from-[#AD1061] via-[#01B7CC] to-[#015d82] p-[6px]">
+      <div className="relative z-10 w-full max-w-2xl rounded-2xl bg-gradient-to-br from-[#214f61] via-[#01B7CC] to-[#015d82] p-[6px]">
         <div className="rounded-2xl bg-white p-8 text-center shadow-xl">
           <div className="mb-6">
             <p className="font-serif text-2xl leading-relaxed break-words whitespace-pre-wrap italic md:text-3xl">
@@ -44,9 +44,9 @@ export default function VersePage() {
             </p>
             <p className="mt-4 font-semibold">{reference}</p>
           </div>
-          <div className="font-satisfy mt-6 text-[32px] tracking-wide text-[#AD1061]">
+          <h1 className="font-satisfy mt-6 text-[32px] tracking-wide text-[#214f61]">
             LuRa 💍
-          </div>
+          </h1>
         </div>
       </div>
 
