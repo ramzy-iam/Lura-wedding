@@ -71,7 +71,7 @@ export const ClothesSection = () => {
                 list={TurquoiseContact.group1.list}
                 withBorder
               />
-              <div className="xs:justify-between flex flex-1 flex-col">
+              <div className="xs:justify-between flex flex-1 flex-col gap-5">
                 <ContactGroup
                   city={TurquoiseContact.group2.city}
                   list={TurquoiseContact.group2.list}
