@@ -33,7 +33,7 @@ export default function VersePage() {
       />
 
       <p className="mt-11 mb-6 text-lg font-medium text-[#AD1061]">
-        {"Une parole d'amour spécialement pour vous... 🌷"}
+        {"Une pensée d'amour 🌷"}
       </p>
 
       <div className="relative z-10 w-full max-w-2xl rounded-2xl bg-gradient-to-br from-[#214f61] via-[#01B7CC] to-[#015d82] p-[6px]">
