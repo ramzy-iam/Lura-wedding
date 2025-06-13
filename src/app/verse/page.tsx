@@ -2,23 +2,25 @@
 
 import { useRouter } from 'next/navigation';
 import { VERSES } from './data';
-import { useState } from 'react';
+// import { useState } from 'react';
 
 export default function VersePage() {
   const slugs = Object.keys(VERSES);
   const router = useRouter();
 
-  const [slug, setSlug] = useState(() => {
-    const index = Math.floor(Math.random() * slugs.length);
-    return slugs[index];
-  });
+  // const [slug, setSlug] = useState(() => {
+  //   const index = Math.floor(Math.random() * slugs.length);
+  //   return slugs[index];
+  // });
+  const index = Math.floor(Math.random() * slugs.length);
+  const slug = slugs[index];
 
   const { reference, verse } = VERSES[slug];
 
-  const regenerate = () => {
-    const newSlug = slugs[Math.floor(Math.random() * slugs.length)];
-    setSlug(newSlug);
-  };
+  // const regenerate = () => {
+  //   const newSlug = slugs[Math.floor(Math.random() * slugs.length)];
+  //   setSlug(newSlug);
+  // };
 
   const goHome = () => {
     router.push('/');
