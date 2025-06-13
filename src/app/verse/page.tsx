@@ -63,7 +63,7 @@ export default function VersePage() {
           onClick={goHome}
           className="cursor-pointer rounded-xl border border-[#AD1061] px-6 py-2 text-[#AD1061] transition hover:bg-[#AD1061] hover:text-white"
         >
-          {"🌸 Allez au Jardin d'Éden"}
+          {"🌸 Un tour au Jardin d'Éden"}
         </button>
       </div>
     </main>
