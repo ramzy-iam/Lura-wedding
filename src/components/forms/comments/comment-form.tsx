@@ -38,7 +38,10 @@ import {
 } from '@/components/ui/alert-dialog';
 
 const commentSchema = z.object({
-  author: z.string().min(1, 'Nom requis'),
+  author: z
+    .string()
+    .min(1, 'Nom requis')
+    .max(30, 'Le nom doit contenir au maximum 30 caractères'),
   email: z.string().email('Email invalide').optional().or(z.literal('')),
   comment: z
     .string()

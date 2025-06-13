@@ -46,12 +46,12 @@ export const CommentItem: React.FC<{ comment: IComment; isLast: boolean }> = ({
 
   return (
     <div className={`py-4 ${!isLast ? 'border-b border-gray-200' : ''}`}>
-      <p className="flex items-center justify-between font-semibold">
-        {comment.author}
-        <span className="text-muted-foreground ml-2 text-sm">
+      <div className="flex flex-wrap items-center justify-between gap-x-2 gap-y-1 font-semibold">
+        <p>{comment.author}</p>
+        <span className="text-muted-foreground justify-self-end text-sm">
           {getRelativeTime(comment.createdAt)}
         </span>
-      </p>
+      </div>
       <div className="flex flex-col">
         <p className="mt-2 inline">{displayedText}</p>
         {needsTruncate && (

@@ -1,7 +1,10 @@
 import { z } from 'zod';
 
 export const commentSchema = z.object({
-  author: z.string().min(1, 'Author is required'),
+  author: z
+    .string()
+    .min(1, 'Author is required')
+    .max(30, 'Author must be 30 characters or less'),
   comment: z
     .string()
     .min(1, 'Comment is required')
