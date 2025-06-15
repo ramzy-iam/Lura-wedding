@@ -18,7 +18,8 @@ const gridImages = [
   '/images/gallery/10-jesus-la-star.jpg',
 ];
 
-const carouselImages = ['/images/gallery/00-save-the-date.jpg', ...gridImages];
+// const carouselImages = ['/images/gallery/00-save-the-date.jpg', ...gridImages];
+const carouselImages = gridImages;
 
 export const GallerySection = () => {
   const [isOpen, setIsOpen] = useState(false);
