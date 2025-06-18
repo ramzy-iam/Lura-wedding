@@ -178,8 +178,18 @@ export const CommentForm = ({
                       textareaRef.current = el;
                     }}
                     className="max-h-48"
+                    maxLength={3000}
+                    onChange={(e) => {
+                      if (e.target.value.length <= 3000) {
+                        field.onChange(e);
+                      }
+                    }}
                   />
                 </FormControl>
+                {/* Character counter */}
+                <div className="text-muted-foreground mt-1 text-right text-xs">
+                  {field.value?.length || 0} / 3000 caractères
+                </div>
                 <FormMessage />
               </FormItem>
             )}
