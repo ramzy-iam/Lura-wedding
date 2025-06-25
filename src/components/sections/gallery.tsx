@@ -180,6 +180,15 @@ export const GallerySection = () => {
       {/* Carousel Overlay */}
       {isOpen && (
         <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black/80 backdrop-blur">
+          <a
+            href={carouselImages[currentIndex]}
+            download
+            className="absolute top-4 left-4 z-10 rounded bg-white/10 px-4 py-2 text-sm font-medium text-white backdrop-blur hover:bg-white/20"
+          >
+            Télécharger
+          </a>
+
+          {/* Existing Close button */}
           <button
             onClick={closeCarousel}
             className="absolute top-4 right-4 z-10 cursor-pointer text-white hover:text-red-400"

@@ -2,25 +2,37 @@
 
 import { useRouter } from 'next/navigation';
 import { VERSES } from './data';
-// import { useState } from 'react';
+import { useState, useEffect } from 'react';
+
+const SLUG_KEY = 'selectedVerseSlug';
 
 export default function VersePage() {
   const slugs = Object.keys(VERSES);
   const router = useRouter();
+  const [slug, setSlug] = useState<string | null>(null);
 
-  // const [slug, setSlug] = useState(() => {
-  //   const index = Math.floor(Math.random() * slugs.length);
-  //   return slugs[index];
-  // });
-  const index = Math.floor(Math.random() * slugs.length);
-  const slug = slugs[index];
+  useEffect(() => {
+    const savedSlug = localStorage.getItem(SLUG_KEY);
+    if (savedSlug && VERSES[savedSlug]) {
+      setSlug(savedSlug);
+    } else {
+      const randomIndex = Math.floor(Math.random() * slugs.length);
+      const randomSlug = slugs[randomIndex];
+      setSlug(randomSlug);
+      localStorage.setItem(SLUG_KEY, randomSlug);
+    }
+  }, []);
+
+  if (!slug)
+    return (
+      <div className="flex min-h-svh items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl text-[#AD1061]">Chargement...</h1>
+        </div>
+      </div>
+    );
 
   const { reference, verse } = VERSES[slug];
-
-  // const regenerate = () => {
-  //   const newSlug = slugs[Math.floor(Math.random() * slugs.length)];
-  //   setSlug(newSlug);
-  // };
 
   const goHome = () => {
     router.push('/');
@@ -53,12 +65,6 @@ export default function VersePage() {
       </div>
 
       <div className="mt-6 flex flex-wrap justify-center gap-4">
-        {/* <button
-          onClick={regenerate}
-          className="rounded-xl bg-[#015d82] px-6 py-2 text-white transition hover:bg-[#005F7C]"
-        >
-          ✨ Encore une !
-        </button> */}
         <button
           onClick={goHome}
           className="cursor-pointer rounded-xl border border-[#AD1061] px-6 py-2 text-[#AD1061] transition hover:bg-[#AD1061] hover:text-white"
