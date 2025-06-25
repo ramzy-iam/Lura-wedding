@@ -1,14 +1,13 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
 import { VERSES } from './data';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 
 const SLUG_KEY = 'selectedVerseSlug';
 
 export default function VersePage() {
   const slugs = Object.keys(VERSES);
-  const router = useRouter();
   const [slug, setSlug] = useState<string | null>(null);
 
   useEffect(() => {
@@ -33,10 +32,6 @@ export default function VersePage() {
     );
 
   const { reference, verse } = VERSES[slug];
-
-  const goHome = () => {
-    router.push('/');
-  };
 
   return (
     <main className="relative mx-auto flex min-h-svh flex-col items-center justify-center px-4 py-8 text-center">
@@ -65,12 +60,12 @@ export default function VersePage() {
       </div>
 
       <div className="mt-6 flex flex-wrap justify-center gap-4">
-        <button
-          onClick={goHome}
+        <Link
+          href="/"
           className="cursor-pointer rounded-xl border border-[#AD1061] px-6 py-2 text-[#AD1061] transition hover:bg-[#AD1061] hover:text-white"
         >
           {"🌸 Un tour au Jardin d'Éden"}
-        </button>
+        </Link>
       </div>
     </main>
   );
