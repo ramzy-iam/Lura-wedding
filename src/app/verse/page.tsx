@@ -66,6 +66,12 @@ export default function VersePage() {
         >
           {"🌸 Un tour au Jardin d'Éden"}
         </Link>
+        <Link
+          href="/pictures"
+          className="cursor-pointer rounded-xl border border-[#015d82] px-6 py-2 text-[#015d82] transition hover:bg-[#015d82] hover:text-white"
+        >
+          {'📸 Partager des souvenirs'}
+        </Link>
       </div>
     </main>
   );
