@@ -3,8 +3,27 @@
 import { useEffect, useState } from 'react';
 import { AgendaIcons, AgendaList } from './data';
 
-const getTimeRemaining = (targetDate: string) => {
-  const total = Date.parse(targetDate) - Date.now();
+// Retourne le prochain samedi à 08h00
+const getNextSaturdayAt8AM = () => {
+  const now = new Date();
+  const target = new Date(now);
+
+  const day = now.getDay(); // 0 = dimanche, 6 = samedi
+  const daysUntilSaturday = (6 - day + 7) % 7; // nb de jours jusqu'à samedi
+
+  target.setDate(now.getDate() + daysUntilSaturday);
+  target.setHours(8, 0, 0, 0);
+
+  // Si on est samedi et il est déjà passé 08h
+  if (day === 6 && now >= target) {
+    target.setDate(target.getDate() + 7);
+  }
+
+  return target;
+};
+
+const getTimeRemaining = (target: Date) => {
+  const total = target.getTime() - Date.now();
   const seconds = Math.floor((total / 1000) % 60);
   const minutes = Math.floor((total / 1000 / 60) % 60);
   const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
@@ -16,14 +35,19 @@ const getTimeRemaining = (targetDate: string) => {
 const pad = (n: number) => String(n).padStart(2, '0');
 
 export const AgendaSection = () => {
-  const targetDate = '2025-07-26T08:00:00';
+  const [targetDate, setTargetDate] = useState(getNextSaturdayAt8AM());
   const [timeLeft, setTimeLeft] = useState(getTimeRemaining(targetDate));
 
   useEffect(() => {
     const interval = setInterval(() => {
       const updated = getTimeRemaining(targetDate);
-      setTimeLeft(updated);
-      if (updated.total <= 0) clearInterval(interval);
+      if (updated.total <= 0) {
+        const newTarget = getNextSaturdayAt8AM();
+        setTargetDate(newTarget);
+        setTimeLeft(getTimeRemaining(newTarget));
+      } else {
+        setTimeLeft(updated);
+      }
     }, 1000);
     return () => clearInterval(interval);
   }, [targetDate]);
