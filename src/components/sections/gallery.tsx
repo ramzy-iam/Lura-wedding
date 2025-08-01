@@ -29,7 +29,7 @@ export const GallerySection = () => {
   const previewImageRefs = useRef<(HTMLImageElement | null)[]>([]);
 
   const openCarousel = useCallback((index: number) => {
-    setCurrentIndex(index + 1); // Décalage pour "save the date"
+    setCurrentIndex(index);
     setIsOpen(true);
   }, []);
 
