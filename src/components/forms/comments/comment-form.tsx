@@ -53,7 +53,7 @@ type CommentSchema = z.infer<typeof commentSchema>;
 
 export const CommentForm = ({
   onSuccess,
-  sortDesc,
+  // sortDesc,
 }: {
   onSuccess?: () => void;
   sortDesc?: boolean;
@@ -80,13 +80,20 @@ export const CommentForm = ({
     textareaRef.current?.focus();
   };
 
-  const { mutateAsync, isPending } = useCreateComment();
+  const {
+    // mutateAsync,
+    isPending,
+  } = useCreateComment();
 
   const handleConfirm = async () => {
     if (!pendingData) return;
+    // -- comments are not longer allowed --
+    if (pendingData) {
+      alert('Désolé, les commentaires sont désormais fermés.');
+    }
 
-    const payload = { ...pendingData, email: pendingData.email || undefined };
-    await mutateAsync({ data: payload, sortDesc });
+    // const payload = { ...pendingData, email: pendingData?.email || undefined };
+    // await mutateAsync({ data: payload, sortDesc });
     form.reset();
     setShowConfirmModal(false);
     setPendingData(null);
