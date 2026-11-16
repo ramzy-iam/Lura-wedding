@@ -64,7 +64,10 @@ export const useCreateCommentOld = () => {
 // Paginates/sorts the static comments snapshot, mirroring the old
 // GET /api/comments response shape so the UI is unchanged.
 function getCommentsPage(page: number, sortDesc: boolean): CommentsResponse {
-  const sorted = [...COMMENTS].sort((a, b) => {
+  const sorted: IComment[] = COMMENTS.map((c) => ({
+    ...c,
+    createdAt: new Date(c.createdAt),
+  })).sort((a, b) => {
     const diff = a.createdAt.getTime() - b.createdAt.getTime();
     return sortDesc ? -diff : diff;
   });

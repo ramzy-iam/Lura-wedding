@@ -1,5 +1,3 @@
-import { IComment } from '@/types';
-
 // Static snapshot of the former `lura."Comment"` table.
 // Emails are intentionally omitted: this file ships to the browser.
 export const COMMENTS: { id: number; author: string; comment: string; createdAt: string }[] =
